@@ -4,11 +4,9 @@ const albumCtrl = require("../controllers/albums")
 
 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
-  res.render('index', { title: 'ALBUMS' });
-});
+router.get('/', albumCtrl.index);
 
 
-router.post('/albumcreate', albumCtrl.create)
+router.post('/create', albumCtrl.create)
 
 module.exports = router;
