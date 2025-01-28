@@ -2,7 +2,6 @@ import { getAlbums } from "../../utilities/album-service";
 import { useEffect, useState } from "react";
 
 
-
 export default function Albums() {
   const [albums, setAlbums] = useState(null);
 
@@ -23,6 +22,7 @@ export default function Albums() {
     return (
       <div>
         <a href={album.link}> {album.title}</a>, {album.artist}
+        <img src={album.image} />
       </div>
     )
   })
@@ -36,5 +36,4 @@ export default function Albums() {
       < button onClick={handleRequest} > get</button >
     </>
   )
-
 }

@@ -30,7 +30,6 @@ export default function AddAlbum() {
     console.log(Object.keys(blankAlbum))
     return (
         <section className="add-album">
-            YOU ARE ADDING AN ALBUM
             <form>
                 {fieldELs}
             </form>
