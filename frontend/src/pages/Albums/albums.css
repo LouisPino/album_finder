@@ -1,0 +1,58 @@
+.albums {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.album-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 25vw;
+    border: 1px solid red;
+    padding: 8px;
+    position: relative;
+    margin: 16px;
+
+}
+
+.album-card>a {
+    text-decoration: none;
+    color: black;
+}
+
+.album-image {
+    width: 100%;
+}
+
+.add-filters {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+}
+
+.add-album {
+    margin-left: 24px;
+
+}
+
+.filter-div {
+    text-align: center;
+}
+
+.filter {
+    margin-bottom: 24px;
+}
+
+.checkbox-label {
+    margin-right: 8px;
+}
+
+.filters {
+    display: inline;
+}
+
+.filter-title {
+    display: inline;
+}

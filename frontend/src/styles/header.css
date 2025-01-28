@@ -1,0 +1,9 @@
+.header {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-link {
+    margin: 0 12px;
+}

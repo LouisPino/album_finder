@@ -6,7 +6,9 @@ import AddAlbum from "./pages/Albums/add_album";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./pages/Home";
+import Random from "./pages/Random";
 import("./styles/footer.css");
+import("./App.css");
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
           <Route exact path="/albums" element={<Albums />} />
           <Route exact path="/albums/add" element={<AddAlbum />} />
           <Route exact path="/artists" element={<Artists />} />
+          <Route exact path="/random" element={<Random />} />
           <Route exact path="/artists/:artist" element={<Artist />} />
         </Routes>
         <Footer />

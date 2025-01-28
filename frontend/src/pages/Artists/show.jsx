@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { findByArtist } from "../../utilities/artist-service";
+import AlbumCard from "../../components/AlbumCard";
 import { useEffect, useState } from "react";
 
 export default function Artist() {
@@ -17,13 +18,16 @@ export default function Artist() {
     }
 
     const albumEls = albums?.map((album) => (
-        <p><a href={album.link} target="_blank">{album.title}</a></p>
+        <AlbumCard album={album} />
 
     ))
     return (
         albums ?
             <section className="artist-page">
-                {albumEls}
+                <div className="albums">
+
+                    {albumEls}
+                </div>
             </section>
 
             : "LOADING"

@@ -13,11 +13,11 @@ export default function AddAlbum() {
         email: "",
         categories: [],
     }
-    const categories = ["noise", "ambient", "improvisation", "acoustic"]
+    const categories = ["noise", "ambient", "improvisation", "acoustic", "electronic", "vocal"]
     const categoryOptions = categories.map((category) => (
         <>
             <input onChange={handleInput} className="category-select" type="checkbox" id={category} name="categories" value={category} />
-            <label htmlFor={category}>{category}</label>
+            <label className="checkbox-label" htmlFor={category}>{category}</label>
         </>
     ))
 
@@ -54,13 +54,13 @@ export default function AddAlbum() {
         return key != "categories" ?
             <>
                 <label>{key === "uploader" ? "your name" : key}</label>
-                <input name={key} onChange={handleInput}></input>
+                <input className="filter" name={key} onChange={handleInput}></input>
             </>
             :
             <>
                 <label>{key}</label>
                 <fieldset>
-                    <div>
+                    <div className="filter" >
                         {categoryOptions}
                     </div>
                 </fieldset>
@@ -75,7 +75,7 @@ export default function AddAlbum() {
             </>
             :
             <section className="add-album">
-                <form>
+                <form className="add-filters">
                     {fieldELs}
                 </form>
                 <button onClick={handleClick}>upload</button>
