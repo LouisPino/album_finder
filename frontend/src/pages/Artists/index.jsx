@@ -1,6 +1,6 @@
 import { getArtists, findByArtist } from "../../utilities/artist-service";
 import { useEffect, useState } from "react";
-
+import { Link } from "react-router-dom"
 
 export default function Artists() {
     const [artists, setArtists] = useState(null)
@@ -13,7 +13,6 @@ export default function Artists() {
     }
     async function handleRequest() {
         const artistResp = await getArtists()
-        console.log(artistResp.sort())
 
         if (artistResp.length) {
             setArtists(artistResp);
@@ -21,10 +20,9 @@ export default function Artists() {
     }
 
     const artistEls = artists?.map((artist) => (
-        <>
+        <Link to={`${artist}`} >
             <p>{artist}</p>
-            <button name={artist} onClick={getfindByArtist}>FIND MY ALBUMS</button>
-        </>
+        </Link>
 
     ))
     return (
@@ -32,6 +30,7 @@ export default function Artists() {
             <section className="artists-page">
                 {artistEls}
             </section>
+
             : "LOADING"
     )
 }
