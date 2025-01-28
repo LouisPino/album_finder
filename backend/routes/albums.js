@@ -4,7 +4,7 @@ const albumCtrl = require("../controllers/albums")
 
 
 /* GET users listing. */
-router.get('/', albumCtrl.index);
+router.get('/', albumCtrl.index)
 
 
 router.post('/create', albumCtrl.create)

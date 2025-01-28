@@ -1,6 +1,8 @@
 var createError = require('http-errors');
 var express = require('express');
+var cors = require('cors');
 var path = require('path');
+
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require("dotenv").config();
@@ -20,6 +22,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use(cors({
+  origin: 'http://localhost:3000', // Replace with your frontend's URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+  credentials: true, // Allow cookies if needed
+}));
+
 
 app.use('/', indexRouter);
 app.use('/albums', albumsRouter);
