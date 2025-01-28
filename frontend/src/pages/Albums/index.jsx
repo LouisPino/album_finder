@@ -8,8 +8,8 @@ export default function Albums() {
 
 
   useEffect(() => {
-    console.log("albums: ", albums)
-  }, [albums])
+    handleRequest()
+  }, [])
 
 
   async function handleRequest() {
@@ -27,13 +27,13 @@ export default function Albums() {
     )
   })
 
-  return (
-    <>
-      <section className="albums-page">
-        ALBUMS
-        <button onClick={handleRequest}>get</button>
-        {albums ? albumsEls : ""}
-      </section>
+  return (albums ?
+    <section className="albums-page">
+      {albumsEls}
+    </section>
+    : <>
+      "LOADING"
+      < button onClick={handleRequest} > get</button >
     </>
   )
 

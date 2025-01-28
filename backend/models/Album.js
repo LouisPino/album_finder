@@ -6,7 +6,9 @@ const albumSchema = new Schema({
     description: String,
     artist: String,
     uploader: String,
-    link: String
+    link: String,
+    image: String
+
 }, {
     timestamps: true
 });

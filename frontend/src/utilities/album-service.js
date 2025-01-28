@@ -8,3 +8,12 @@ export async function getAlbums() {
         return err
     }
 }
+
+export async function addAlbum(albumInfo) {
+    try {
+        const data = await albumAPI.create(albumInfo)
+        return data
+    } catch (err) {
+        return err
+    }
+}

@@ -1,5 +1,8 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Albums from "./pages/Albums";
+import AddAlbum from "./pages/Albums/add_album";
+import Footer from "./components/Footer";
+import("./styles/footer.css");
 
 function App() {
   return (
@@ -9,9 +12,11 @@ function App() {
 
           <Routes>
             <Route exact path="/albums" element={<Albums />} />
+            <Route exact path="/albums/add" element={<AddAlbum />} />
           </Routes>
         </BrowserRouter>
       </div>
+      <Footer />
     </div>
   );
 }
