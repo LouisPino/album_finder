@@ -8,3 +8,12 @@ export async function getArtists() {
         return err
     }
 }
+
+export async function findByArtist(artist) {
+    try {
+        const data = await artistAPI.findByArtist(artist)
+        return data
+    } catch (err) {
+        return err
+    }
+}

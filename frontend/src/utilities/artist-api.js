@@ -17,6 +17,25 @@ export async function index() {
         return new Error("Invalid Request");
     }
 }
+export async function findByArtist(artist) {
+    const res = await fetch(`${BASE_URL}/artists/${artist}`, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": true,
+        },
+    });
+    if (res.ok) {
+        return res.json();
+    } else {
+        return new Error("Invalid Request");
+    }
+}
+
+
+
 export async function create(data) {
 
     const res = await fetch(`${BASE_URL}/albums/create`, {

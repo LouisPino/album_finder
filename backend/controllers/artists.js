@@ -15,7 +15,8 @@ async function index(req, res) {
 
 async function findByArtist(req, res) {
     try {
-        res.status(200).json(await Album.find({ artist: req.body.artist }));
+        console.log(req.params.artist)
+        res.status(200).json(await Album.find({ artist: req.params.artist }));
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
