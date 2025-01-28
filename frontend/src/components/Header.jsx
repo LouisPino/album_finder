@@ -14,6 +14,7 @@ export default function Header() {
             <Link to="/albums/add">Add Album</Link>
             <Link to="/">Home</Link>
             <Link to="/albums">View Albums</Link>
+            <Link to="/artists">View Artists</Link>
         </div>
     )
 

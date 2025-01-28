@@ -33,7 +33,6 @@ export default function Albums() {
     </section>
     : <>
       "LOADING"
-      < button onClick={handleRequest} > get</button >
     </>
   )
 }

@@ -1,5 +1,6 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Albums from "./pages/Albums";
+import Artists from "./pages/Artists";
 import AddAlbum from "./pages/Albums/add_album";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/albums" element={<Albums />} />
           <Route exact path="/albums/add" element={<AddAlbum />} />
+          <Route exact path="/artists" element={<Artists />} />
         </Routes>
         <Footer />
       </BrowserRouter>
