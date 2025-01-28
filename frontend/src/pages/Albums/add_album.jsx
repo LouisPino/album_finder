@@ -3,19 +3,21 @@ import { addAlbum } from "../../utilities/album-service";
 
 
 export default function AddAlbum() {
+    const [uploaded, setUploaded] = useState(false)
     const blankAlbum = {
         title: "",
         artist: "",
         link: "",
         image: "",
         uploader: "",
-        categories: []
+        email: "",
+        categories: [],
     }
     const categories = ["noise", "ambient", "improvisation", "acoustic"]
     const categoryOptions = categories.map((category) => (
         <>
             <input onChange={handleInput} className="category-select" type="checkbox" id={category} name="categories" value={category} />
-            <label for={category}>{category}</label>
+            <label htmlFor={category}>{category}</label>
         </>
     ))
 
@@ -30,7 +32,9 @@ export default function AddAlbum() {
         return checkedCategories
     }
 
-
+    function handleReset() {
+        setUploaded(false)
+    }
     function handleInput(e) {
         let tempObj = albumInfo
         if (e.target.name != "categories") {
@@ -44,11 +48,12 @@ export default function AddAlbum() {
     const [albumInfo, setAlbumInfo] = useState(blankAlbum)
     async function handleClick() {
         addAlbum(albumInfo)
+        setUploaded(true)
     }
     const fieldELs = Object.keys(blankAlbum).map((key) => {
         return key != "categories" ?
             <>
-                <label>{key}</label>
+                <label>{key === "uploader" ? "your name" : key}</label>
                 <input name={key} onChange={handleInput}></input>
             </>
             :
@@ -58,17 +63,22 @@ export default function AddAlbum() {
                     <div>
                         {categoryOptions}
                     </div>
-
                 </fieldset>
             </>
     }
     )
     return (
-        <section className="add-album">
-            <form>
-                {fieldELs}
-            </form>
-            <button onClick={handleClick}>upload</button>
-        </section>
+        uploaded ?
+            <>
+                <p>Thank you for uploading!</p>
+                <button onClick={handleReset}>upload another album</button>
+            </>
+            :
+            <section className="add-album">
+                <form>
+                    {fieldELs}
+                </form>
+                <button onClick={handleClick}>upload</button>
+            </section>
     )
 }
