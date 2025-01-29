@@ -1,17 +1,8 @@
 import * as userAPI from './user-api';
 
-export async function getUsers() {
+export async function getUserByEmail(email) {
     try {
-        const data = await artistAPI.index()
-        return data
-    } catch (err) {
-        return err
-    }
-}
-
-export async function createUser(userData) {
-    try {
-        const data = await userApi.create(userData)
+        const data = await userAPI.getUserByEmail(email)
         return data
     } catch (err) {
         return err

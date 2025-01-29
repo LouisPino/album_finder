@@ -26,7 +26,7 @@ function App() {
           <Route exact path="/albums/add" element={<AddAlbum user={user} />} />
           <Route exact path="/albums/edit/:id" element={<EditAlbum user={user} />} />
           <Route exact path="/artists" element={<Artists />} />
-          <Route exact path="/users" element={<MyAlbums user={user} />} />
+          <Route exact path="/users/:email" element={<MyAlbums user={user} />} />
           <Route exact path="/random" element={<Random />} />
           <Route exact path="/artists/:artist" element={<Artist />} />
         </Routes>
