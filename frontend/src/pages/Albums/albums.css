@@ -34,7 +34,15 @@
 
 .add-album {
     margin-left: 24px;
+}
 
+.artists-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.artist-input {
+    margin: 4px 0;
 }
 
 .filter-div {

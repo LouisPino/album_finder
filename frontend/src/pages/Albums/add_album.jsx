@@ -6,7 +6,7 @@ export default function AddAlbum({ user }) {
     const [uploaded, setUploaded] = useState(false)
     const blankAlbum = {
         title: "",
-        artist: "",
+        artist: [],
         link: "",
         image: "",
         release_year: 0,
@@ -36,9 +36,18 @@ export default function AddAlbum({ user }) {
         let tempObj = albumInfo
         tempObj.uploader = user.name
         tempObj.email = user.email
-        if (e.target.name != "categories") {
+        if (e.target.name != "categories" && e.target.name != "artist") {
             tempObj[e.target.name] = e.target.value
-        } else {
+        } else if (e.target.name === "artist") {
+            const artistEls = document.querySelectorAll(".artist-input")
+            let values = []
+            for (const el of artistEls) {
+                if (el.value) {
+                    values.push(el.value)
+                }
+            }
+            tempObj[e.target.name] = values
+        } else if (e.target.name === "catergories") {
             tempObj.categories = getCategoriesChecked()
         }
         setAlbumInfo(tempObj)
@@ -48,26 +57,52 @@ export default function AddAlbum({ user }) {
         setUploaded(false)
     }
 
+    function handleAddArtist(e) {
+        e.preventDefault()
+        const addArtistEl = document.querySelector(".add-artist-btn")
+        const newEl = document.createElement("input")
+        newEl.classList.add("artist-input")
+        newEl.name = "artist"
+        newEl.addEventListener("input", handleInput)
+        addArtistEl.parentElement.insertBefore(newEl, addArtistEl)
+    }
+
     const [albumInfo, setAlbumInfo] = useState(blankAlbum)
     async function handleClick() {
         addAlbum(albumInfo)
         setUploaded(true)
     }
     const fieldELs = Object.keys(blankAlbum).map((key) => {
-        return key != "categories" ?
-            <>
-                <label>{key === "uploader" ? "your name" : key}</label>
-                <input className="filter" name={key} onChange={handleInput}></input>
+        if (key === "categories") {
+            return (
+                <>
+                    <label>{key}</label>
+                    <fieldset>
+                        <div className="filter" >
+                            {categoryOptions}
+                        </div>
+                    </fieldset>
+                </>
+            )
+        } else if (key === "artist") {
+            return (<>
+                <label>artists</label>
+                <div className="artists-field filter" >
+                    <input onChange={handleInput} name="artist" className="artist-input"></input>
+                    <button className="add-artist-btn" onClick={handleAddArtist}> + </button>
+                </div>
             </>
-            :
-            <>
-                <label>{key}</label>
-                <fieldset>
-                    <div className="filter" >
-                        {categoryOptions}
-                    </div>
-                </fieldset>
-            </>
+            )
+        } else {
+            return (
+                <>
+                    <label>{key}</label>
+                    <input className="filter" name={key} onChange={handleInput}></input>
+                </>
+            )
+        }
+
+
     }
     )
     return (
