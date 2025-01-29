@@ -6,6 +6,7 @@ const albumSchema = new Schema({
     description: String,
     artist: String,
     uploader: String,
+    email: String,
     link: String,
     image: String,
     categories: [String]

@@ -5,10 +5,8 @@ import GoogleAuth from './GoogleAuth';
 
 import("../styles/header.css")
 
-export default function Header() {
-    const [user, setUser] = useState(false)
+export default function Header({ user, setUser }) {
     const navigate = useNavigate()
-
 
     useEffect(() => {
     }, [])
@@ -24,15 +22,12 @@ export default function Header() {
                 <div className="header-r">
                     <Link className="header-link" to="/albums/add">Add Album</Link>
                     <Link className="header-link" to="/users">My Albums</Link>
-                    <Link className="header-link" to="/users">Log Out</Link>
+                    <Link onClick={() => { setUser(null) }}>Log Out</Link>
                 </div>
                 :
                 <div className="header-r">
-                    <Link className="header-link" to="/users">Log In</Link>
-                    <GoogleAuth />
+                    <GoogleAuth user={user} setUser={setUser} />
                 </div>
-
-
             }
         </div >
     )

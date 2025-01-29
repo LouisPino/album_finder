@@ -6,20 +6,25 @@ import AddAlbum from "./pages/Albums/add_album";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./pages/Home";
+import MyAlbums from "./pages/MyAlbums";
 import Random from "./pages/Random";
+import { useEffect, useState } from "react";
 import("./styles/footer.css");
 import("./App.css");
 
 function App() {
+  const [user, setUser] = useState(false)
+
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
+        <Header user={user} setUser={setUser} />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/albums" element={<Albums />} />
-          <Route exact path="/albums/add" element={<AddAlbum />} />
+          <Route exact path="/albums/add" element={<AddAlbum user={user} />} />
           <Route exact path="/artists" element={<Artists />} />
+          <Route exact path="/users" element={<MyAlbums user={user} />} />
           <Route exact path="/random" element={<Random />} />
           <Route exact path="/artists/:artist" element={<Artist />} />
         </Routes>

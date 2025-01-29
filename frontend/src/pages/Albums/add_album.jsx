@@ -2,15 +2,14 @@ import { useEffect, useState } from "react";
 import { addAlbum } from "../../utilities/album-service";
 
 
-export default function AddAlbum() {
+export default function AddAlbum({ user }) {
     const [uploaded, setUploaded] = useState(false)
     const blankAlbum = {
         title: "",
         artist: "",
         link: "",
         image: "",
-        uploader: "",
-        email: "",
+        release_year: "",
         categories: [],
     }
     const categories = ["noise", "ambient", "improvisation", "acoustic", "electronic", "vocal"]
@@ -37,6 +36,8 @@ export default function AddAlbum() {
     }
     function handleInput(e) {
         let tempObj = albumInfo
+        tempObj.uploader = user.name
+        tempObj.email = user.email
         if (e.target.name != "categories") {
             tempObj[e.target.name] = e.target.value
         } else {

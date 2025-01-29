@@ -17,3 +17,21 @@ export async function addAlbum(albumInfo) {
         return err
     }
 }
+
+export async function getUserAlbums(user) {
+    try {
+        const data = await albumAPI.getUserAlbums(user)
+        return data
+    } catch (err) {
+        return err
+    }
+}
+
+export async function deleteAlbumById(id) {
+    try {
+        const data = await albumAPI.deleteAlbumById(id)
+        return data
+    } catch (err) {
+        return err
+    }
+}
