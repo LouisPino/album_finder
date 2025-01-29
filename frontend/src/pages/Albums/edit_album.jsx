@@ -13,6 +13,7 @@ export default function EditAlbum({ user, album }) {
         link: "",
         image: "",
         release_year: 0,
+        artist: [],
         categories: []
     }
     useEffect(() => {
@@ -24,7 +25,6 @@ export default function EditAlbum({ user, album }) {
         const album = await getAlbumById(location.pathname.split("/")[location.pathname.split("/").length - 1])
         setAlbumInfo(album)
         setId(album._id)
-        console.log(album)
     }
     const categories = ["noise", "ambient", "improvisation", "acoustic", "electronic", "vocal"]
     const categoryOptions = categories.map((category) => (
@@ -47,36 +47,70 @@ export default function EditAlbum({ user, album }) {
 
     function handleInput(e) {
         let tempAlbum = { ...albumInfo }
-        if (e.target.name != "categories") {
+        if (e.target.name != "categories" && e.target.name != "artist") {
             tempAlbum[e.target.name] = e.target.value
-        } else {
+        } else if (e.target.name === "artist") {
+            const artistEls = document.querySelectorAll(".artist-input")
+            let values = []
+            for (const el of artistEls) {
+                if (el.value) {
+                    values.push(el.value)
+                }
+            }
+            tempAlbum[e.target.name] = values
+        } else if (e.target.name === "categories") {
             tempAlbum.categories = getCategoriesChecked()
         }
         setAlbumInfo(tempAlbum)
     }
 
+    function handleAddArtist(e) {
+        e.preventDefault()
+        const addArtistEl = document.querySelector(".add-artist-btn")
+        const newEl = document.createElement("input")
+        newEl.classList.add("artist-input")
+        newEl.name = "artist"
+        newEl.addEventListener("input", handleInput)
+        addArtistEl.parentElement.insertBefore(newEl, addArtistEl)
+    }
+
     async function handleClick() {
         let album = albumInfo
         album._id = id
+        console.log(album)
         editAlbum(album)
     }
     if (albumInfo) {
 
         const fieldELs = Object.keys(blankAlbum).map((key) => {
-            return key != "categories" ?
-                <>
-                    <label>{key}</label>
-                    <input className="filter" name={key} onChange={handleInput} value={albumInfo[key]}></input>
+            if (key === "categories") {
+                return (
+                    <>
+                        <label>{key}</label>
+                        <fieldset>
+                            <div className="filter" >
+                                {categoryOptions}
+                            </div>
+                        </fieldset>
+                    </>
+                )
+            } else if (key === "artist") {
+                return (<>
+                    <label>artists</label>
+                    <div className="artists-field filter" >
+                        <input onChange={handleInput} name="artist" className="artist-input" value={albumInfo["artist"][0]}></input>
+                        <button className="add-artist-btn" onClick={handleAddArtist}> + </button>
+                    </div>
                 </>
-                :
-                <>
-                    <label>{key}</label>
-                    <fieldset>
-                        <div className="filter" >
-                            {categoryOptions}
-                        </div>
-                    </fieldset>
-                </>
+                )
+            } else {
+                return (
+                    <>
+                        <label>{key}</label>
+                        <input className="filter" name={key} onChange={handleInput} value={albumInfo[key]}></input>
+                    </>
+                )
+            }
         }
         )
         return (
