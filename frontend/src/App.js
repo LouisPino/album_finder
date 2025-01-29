@@ -3,6 +3,7 @@ import Albums from "./pages/Albums";
 import Artists from "./pages/Artists";
 import Artist from "./pages/Artists/show";
 import AddAlbum from "./pages/Albums/add_album";
+import EditAlbum from "./pages/Albums/edit_album";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./pages/Home";
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/albums" element={<Albums />} />
           <Route exact path="/albums/add" element={<AddAlbum user={user} />} />
+          <Route exact path="/albums/edit/:id" element={<EditAlbum user={user} />} />
           <Route exact path="/artists" element={<Artists />} />
           <Route exact path="/users" element={<MyAlbums user={user} />} />
           <Route exact path="/random" element={<Random />} />

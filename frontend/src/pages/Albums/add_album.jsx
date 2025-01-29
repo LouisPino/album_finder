@@ -9,7 +9,8 @@ export default function AddAlbum({ user }) {
         artist: "",
         link: "",
         image: "",
-        release_year: "",
+        release_year: 0,
+        description: "",
         categories: [],
     }
     const categories = ["noise", "ambient", "improvisation", "acoustic", "electronic", "vocal"]
@@ -31,9 +32,6 @@ export default function AddAlbum({ user }) {
         return checkedCategories
     }
 
-    function handleReset() {
-        setUploaded(false)
-    }
     function handleInput(e) {
         let tempObj = albumInfo
         tempObj.uploader = user.name
@@ -44,6 +42,10 @@ export default function AddAlbum({ user }) {
             tempObj.categories = getCategoriesChecked()
         }
         setAlbumInfo(tempObj)
+    }
+
+    function handleReset() {
+        setUploaded(false)
     }
 
     const [albumInfo, setAlbumInfo] = useState(blankAlbum)
@@ -71,8 +73,8 @@ export default function AddAlbum({ user }) {
     return (
         uploaded ?
             <>
-                <p>Thank you for uploading!</p>
-                <button onClick={handleReset}>upload another album</button>
+                <p>Thank you for adding!</p>
+                <button onClick={handleReset}>Upload Another?</button>
             </>
             :
             <section className="add-album">

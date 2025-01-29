@@ -35,3 +35,21 @@ export async function deleteAlbumById(id) {
         return err
     }
 }
+
+export async function getAlbumById(id) {
+    try {
+        const data = await albumAPI.getAlbumById(id)
+        return data
+    } catch (err) {
+        return err
+    }
+}
+
+export async function editAlbum(album) {
+    try {
+        const data = await albumAPI.editAlbum(album)
+        return data
+    } catch (err) {
+        return err
+    }
+}

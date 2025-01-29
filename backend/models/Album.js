@@ -9,6 +9,7 @@ const albumSchema = new Schema({
     email: String,
     link: String,
     image: String,
+    release_year: Number,
     categories: [String]
 }, {
     timestamps: true

@@ -1,12 +1,12 @@
 import { getUserAlbums, deleteAlbumById } from "../../utilities/album-service";
 import { useEffect, useState } from "react";
 import AlbumCard from "../../components/AlbumCard";
+import { Link } from "react-router-dom";
 import("./myalbums.css")
 
 
 export default function MyAlbums({ user }) {
     const [albums, setAlbums] = useState(null);
-
 
     useEffect(() => {
         handleLoad()
@@ -30,8 +30,10 @@ export default function MyAlbums({ user }) {
     const albumsEls = albums?.map((album) => {
         return (<div className="my-card">
             <AlbumCard album={album} />
-            <button onClick={handleEdit} name={album._id} className="edit-btn">EDIT</button>
-            <button onClick={handleRemove} name={album._id} className="remove-btn">REMOVE</button>
+            <Link to={`/albums/edit/${album._id}`}>
+                <button onClick={handleEdit} name={album._id} className="edit-btn">EDIT</button>
+            </Link >
+            <button name={album._id} className="remove-btn">REMOVE</button>
         </div >
         )
     })

@@ -68,3 +68,38 @@ export async function deleteAlbumById(id) {
         return new Error("Invalid Request");
     }
 }
+
+
+export async function getAlbumById(id) {
+    const res = await fetch(`${BASE_URL}/albums/id/${id}`, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+    });
+    if (res.ok) {
+        return res.json();
+    } else {
+        return new Error("Invalid Request");
+    }
+}
+
+
+export async function editAlbum(album) {
+    const res = await fetch(`${BASE_URL}/albums/edit/${album._id}`, {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(album)
+    });
+    if (res.ok) {
+        return res.json();
+    } else {
+        return new Error("Invalid Request");
+    }
+}
