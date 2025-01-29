@@ -8,7 +8,6 @@ export default function Albums({ user }) {
   const [albums, setAlbums] = useState(null);
   const [filters, setFilters] = useState(null)
   const categories = ["noise", "acoustic", "ambient", "improvisation", "vocal", "acoustic"]
-  console.log(user)
 
   useEffect(() => {
     handleRequest()
@@ -27,10 +26,18 @@ export default function Albums({ user }) {
     </>
   )) : ""
 
-
+  function shuffleArray(array) {
+    for (var i = array.length - 1; i >= 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+  }
   async function handleRequest() {
     const albumsResp = await getAlbums()
     if (albumsResp.length) {
+      shuffleArray(albumsResp)
       setAlbums(albumsResp);
     }
   }

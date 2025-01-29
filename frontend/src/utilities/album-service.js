@@ -10,6 +10,7 @@ export async function getAlbums() {
 }
 
 export async function addAlbum(albumInfo) {
+    console.log("UPLOAD INITIATED")
     try {
         const data = await albumAPI.create(albumInfo)
         return data

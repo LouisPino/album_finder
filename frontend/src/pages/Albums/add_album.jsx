@@ -49,7 +49,6 @@ export default function AddAlbum({ user }) {
             tempObj[e.target.name] = values
         } else if (e.target.name === "categories") {
             tempObj.categories = getCategoriesChecked()
-            console.log(tempObj.categories)
         }
         setAlbumInfo(tempObj)
     }
@@ -69,10 +68,26 @@ export default function AddAlbum({ user }) {
     }
 
     const [albumInfo, setAlbumInfo] = useState(blankAlbum)
+
     async function handleClick() {
+        console.log(albumInfo.categories.length)
+        for (let key of Object.keys(albumInfo)) {
+            if (!albumInfo[key] && key != "uploader" && key != "email") {
+                alert(`Must fill all fields`)
+                return
+            } else if (albumInfo.categories.length === 0) {
+                alert(` Must choose at least one category`)
+                return
+            } else if (isNaN(albumInfo.release_year)) {
+                alert(` Release year must be an integer`)
+                return
+            }
+        }
         addAlbum(albumInfo)
+        setAlbumInfo(blankAlbum)
         setUploaded(true)
     }
+
     const fieldELs = Object.keys(blankAlbum).map((key) => {
         if (key === "categories") {
             return (
