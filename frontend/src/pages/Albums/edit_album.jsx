@@ -3,7 +3,7 @@ import { editAlbum, getAlbumById } from "../../utilities/album-service";
 import { useLocation } from "react-router-dom";
 
 
-export default function EditAlbum({ user, album }) {
+export default function EditAlbum({ user }) {
     const location = useLocation()
     const [albumInfo, setAlbumInfo] = useState(null)
     const [id, setId] = useState()
@@ -19,6 +19,15 @@ export default function EditAlbum({ user, album }) {
     useEffect(() => {
         getAlbumInfo()
     }, [])
+
+    const [artistsLoaded, setArtistsLoaded] = useState(false);
+
+    useEffect(() => {
+        if (albumInfo && !artistsLoaded) {
+            loadArtists();
+            setArtistsLoaded(true); // Prevent re-running
+        }
+    }, [albumInfo]);
 
 
     async function getAlbumInfo() {
@@ -74,10 +83,23 @@ export default function EditAlbum({ user, album }) {
         addArtistEl.parentElement.insertBefore(newEl, addArtistEl)
     }
 
+    function loadArtists() {
+        if (albumInfo) {
+            for (const artist of albumInfo.artist) {
+                const addArtistEl = document.querySelector(".add-artist-btn")
+                const newEl = document.createElement("input")
+                newEl.classList.add("artist-input")
+                newEl.name = "artist"
+                newEl.value = artist
+                newEl.addEventListener("input", handleInput)
+                addArtistEl.parentElement.insertBefore(newEl, addArtistEl)
+            }
+        }
+    }
+
     async function handleClick() {
         let album = albumInfo
         album._id = id
-        console.log(album)
         editAlbum(album)
     }
     if (albumInfo) {
@@ -98,7 +120,7 @@ export default function EditAlbum({ user, album }) {
                 return (<>
                     <label>artists</label>
                     <div className="artists-field filter" >
-                        <input onChange={handleInput} name="artist" className="artist-input" value={albumInfo["artist"][0]}></input>
+                        {/* <input onChange={handleInput} name="artist" className="artist-input" value={albumInfo["artist"][0]}></input> */}
                         <button className="add-artist-btn" onClick={handleAddArtist}> + </button>
                     </div>
                 </>
@@ -113,6 +135,7 @@ export default function EditAlbum({ user, album }) {
             }
         }
         )
+
         return (
             <section className="add-album">
                 <form className="add-filters">
@@ -121,5 +144,6 @@ export default function EditAlbum({ user, album }) {
                 <button onClick={handleClick}>upload</button>
             </section>
         )
+
     }
 }
