@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { editAlbum, getAlbumById } from "../../utilities/album-service";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 export default function EditAlbum({ user }) {
+    const navigate = useNavigate()
     const location = useLocation()
     const [albumInfo, setAlbumInfo] = useState(null)
     const [id, setId] = useState()
@@ -38,7 +39,7 @@ export default function EditAlbum({ user }) {
     const categories = ["noise", "ambient", "improvisation", "acoustic", "electronic", "vocal"]
     const categoryOptions = categories.map((category) => (
         <>
-            <input onChange={handleInput} className="category-select" type="checkbox" id={category} name="categories" value={category} />
+            <input onChange={handleInput} className="category-select" type="checkbox" id={category} name="categories" value={category} checked={albumInfo?.categories.includes(category) ? "on" : ""} />
             <label className="checkbox-label" htmlFor={category}>{category}</label>
         </>
     ))
@@ -55,6 +56,7 @@ export default function EditAlbum({ user }) {
     }
 
     function handleInput(e) {
+        console.log(e.target.value)
         let tempAlbum = { ...albumInfo }
         if (e.target.name != "categories" && e.target.name != "artist") {
             tempAlbum[e.target.name] = e.target.value
@@ -101,6 +103,7 @@ export default function EditAlbum({ user }) {
         let album = albumInfo
         album._id = id
         editAlbum(album)
+        navigate("/users")
     }
     if (albumInfo) {
 
@@ -120,7 +123,6 @@ export default function EditAlbum({ user }) {
                 return (<>
                     <label>artists</label>
                     <div className="artists-field filter" >
-                        {/* <input onChange={handleInput} name="artist" className="artist-input" value={albumInfo["artist"][0]}></input> */}
                         <button className="add-artist-btn" onClick={handleAddArtist}> + </button>
                     </div>
                 </>
