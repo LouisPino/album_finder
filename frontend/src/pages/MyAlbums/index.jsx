@@ -1,4 +1,4 @@
-import { getUserAlbums, deleteAlbumById } from "../../utilities/album-service";
+import { getUserAlbums, deleteAlbumById, getUserSavedAlbumsById } from "../../utilities/album-service";
 import { getUserByEmail } from "../../utilities/user-service";
 import { useEffect, useState } from "react";
 import AlbumCard from "../../components/AlbumCard";
@@ -7,6 +7,7 @@ import("./myalbums.css");
 
 export default function MyAlbums({ user }) {
     const [albums, setAlbums] = useState(null);
+    const [savedAlbums, setSavedAlbums] = useState(null);
     const [profile, setProfile] = useState(null);
 
     const location = useLocation();
@@ -21,9 +22,19 @@ export default function MyAlbums({ user }) {
         }
     }, [profile]);
 
+    useEffect(() => {
+        console.log(albums)
+    }, [albums]);
+
+    useEffect(() => {
+        console.log(savedAlbums)
+    }, [savedAlbums]);
+
     async function handleLoad() {
         const albumsResp = await getUserAlbums(profile);
         setAlbums(albumsResp);
+        const savedAlbumsResp = await getUserSavedAlbumsById(profile);
+        setSavedAlbums(savedAlbumsResp);
     }
 
     async function getProfile() {
@@ -46,7 +57,27 @@ export default function MyAlbums({ user }) {
                     {albums.length > 0 ? (
                         albums.map((album) => (
                             <div key={album._id} className="my-card">
-                                <AlbumCard album={album} />
+                                <AlbumCard album={album} user={user} />
+                                <Link to={`/albums/edit/${album._id}`}>
+                                    {user.email === profile?.email && <button className="edit-btn">EDIT</button>}
+                                </Link>
+                                {user.email === profile?.email && (
+                                    <button onClick={handleRemove} name={album._id} className="remove-btn">
+                                        REMOVE
+                                    </button>
+                                )}
+                            </div>
+                        ))
+                    ) : (
+                        <p>No albums found.</p>
+                    )}
+                </div>
+                <h2>{profile?.name}'s liked albums</h2>
+                <div className="albums">
+                    {savedAlbums?.length > 0 ? (
+                        savedAlbums.map((album) => (
+                            <div key={album._id} className="my-card">
+                                <AlbumCard album={album} user={user} />
                                 <Link to={`/albums/edit/${album._id}`}>
                                     {user.email === profile?.email && <button className="edit-btn">EDIT</button>}
                                 </Link>

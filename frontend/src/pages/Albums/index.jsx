@@ -4,11 +4,11 @@ import AlbumCard from "../../components/AlbumCard";
 import("./albums.css")
 
 
-export default function Albums() {
+export default function Albums({ user }) {
   const [albums, setAlbums] = useState(null);
   const [filters, setFilters] = useState(null)
-  const categories = ["noise", "acoustic", "ambient", "improvisation"]
-
+  const categories = ["noise", "acoustic", "ambient", "improvisation", "vocal", "acoustic"]
+  console.log(user)
 
   useEffect(() => {
     handleRequest()
@@ -51,7 +51,7 @@ export default function Albums() {
     }
   }).map((album) => {
     return (
-      <AlbumCard album={album} />
+      <AlbumCard album={album} user={user} />
     )
   })
 

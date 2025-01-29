@@ -8,3 +8,12 @@ export async function getUserByEmail(email) {
         return err
     }
 }
+
+export async function updateUser(user) {
+    try {
+        const data = await userAPI.updateUser(user)
+        return data
+    } catch (err) {
+        return err
+    }
+}

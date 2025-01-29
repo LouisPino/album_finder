@@ -1,9 +1,10 @@
-const { Album } = require("../models");
+const { Album, User } = require("../models");
 
 module.exports = {
     create,
     index,
     getAlbumsByEmail,
+    getUserSavedAlbumsById,
     deleteAlbumById,
     getAlbumById,
     editAlbum
@@ -28,6 +29,16 @@ async function index(req, res) {
 async function getAlbumsByEmail(req, res) {
     try {
         res.status(200).json(await Album.find({ email: req.params.email }));
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+}
+
+async function getUserSavedAlbumsById(req, res) {
+    const user = await User.find({ id: req.params.id })
+    const ids = user[0].favorites
+    try {
+        res.status(200).json(await Album.find({ '_id': { $in: ids } }));
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

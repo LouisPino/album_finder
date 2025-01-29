@@ -6,7 +6,9 @@ const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const client = new OAuth2Client(GOOGLE_CLIENT_ID);
 
 module.exports = {
-    signIn
+    signIn,
+    getUserByEmail,
+    updateUser
 };
 async function signIn(req, res) {
     const { credential, client_id } = req.body;
@@ -47,5 +49,19 @@ async function signIn(req, res) {
     } catch (err) {
         console.error('Error during Google Authentication:', err);
         res.status(400).json({ error: 'Authentication failed', details: err });
+    }
+}
+async function getUserByEmail(req, res) {
+    try {
+        res.status(200).json(await User.find({ email: req.params.email }));
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+}
+async function updateUser(req, res) {
+    try {
+        res.status(200).json(await User.findByIdAndUpdate(req.params.id, req.body));
+    } catch (error) {
+        res.status(400).json({ error: error.message });
     }
 }

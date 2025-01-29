@@ -27,6 +27,15 @@ export async function getUserAlbums(user) {
     }
 }
 
+export async function getUserSavedAlbumsById(user) {
+    try {
+        const data = await albumAPI.getUserSavedAlbumsById(user)
+        return data
+    } catch (err) {
+        return err
+    }
+}
+
 export async function deleteAlbumById(id) {
     try {
         const data = await albumAPI.deleteAlbumById(id)

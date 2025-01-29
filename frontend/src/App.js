@@ -21,14 +21,14 @@ function App() {
       <BrowserRouter>
         <Header user={user} setUser={setUser} />
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/albums" element={<Albums />} />
+          <Route exact path="/" element={<Home user={user} />} />
+          <Route exact path="/albums" element={<Albums user={user} />} />
           <Route exact path="/albums/add" element={<AddAlbum user={user} />} />
           <Route exact path="/albums/edit/:id" element={<EditAlbum user={user} />} />
-          <Route exact path="/artists" element={<Artists />} />
+          <Route exact path="/artists" element={<Artists user={user} />} />
           <Route exact path="/users/:email" element={<MyAlbums user={user} />} />
-          <Route exact path="/random" element={<Random />} />
-          <Route exact path="/artists/:artist" element={<Artist />} />
+          <Route exact path="/random" element={<Random user={user} />} />
+          <Route exact path="/artists/:artist" element={<Artist user={user} />} />
         </Routes>
         <Footer />
       </BrowserRouter>

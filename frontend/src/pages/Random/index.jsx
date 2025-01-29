@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import AlbumCard from "../../components/AlbumCard";
 import("./random.css")
 
-export default function Random({ }) {
+export default function Random({ user }) {
     const [album, setAlbum] = useState(null)
 
     async function getNewAlbum() {
@@ -19,7 +19,7 @@ export default function Random({ }) {
     return (album ?
         <div className="random-main">
             Random Album
-            <AlbumCard album={album} />
+            <AlbumCard album={album} user={user} />
             <button className="random-btn" onClick={getNewAlbum}>Pick Another!</button>
         </div>
         :

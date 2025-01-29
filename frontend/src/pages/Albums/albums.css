@@ -64,3 +64,12 @@
 .filter-title {
     display: inline;
 }
+
+.album-heart {
+    position: absolute;
+    align-self: end;
+}
+
+.album-heart>img {
+    width: 24px;
+}

@@ -5,8 +5,11 @@ const albumCtrl = require("../controllers/albums")
 /* GET users listing. */
 router.get('/', albumCtrl.index)
 router.get('/:email', albumCtrl.getAlbumsByEmail)
+router.get('/saved/:id', albumCtrl.getUserSavedAlbumsById)
 router.get('/id/:id', albumCtrl.getAlbumById)
+
 router.put('/edit/:id', albumCtrl.editAlbum)
+
 router.delete('/:id', albumCtrl.deleteAlbumById)
 
 

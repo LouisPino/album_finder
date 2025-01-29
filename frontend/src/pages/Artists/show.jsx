@@ -3,7 +3,7 @@ import { findByArtist } from "../../utilities/artist-service";
 import AlbumCard from "../../components/AlbumCard";
 import { useEffect, useState } from "react";
 
-export default function Artist() {
+export default function Artist({ user }) {
     const [albums, setAlbums] = useState(null)
     const location = useLocation()
     useEffect(() => {
@@ -18,8 +18,7 @@ export default function Artist() {
     }
 
     const albumEls = albums?.map((album) => (
-        <AlbumCard album={album} />
-
+        <AlbumCard album={album} user={user} />
     ))
     return (
         albums ?

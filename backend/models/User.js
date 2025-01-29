@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const { Schema, Types } = mongoose;
 
 const userSchema = new Schema({
     email: {
@@ -11,10 +11,7 @@ const userSchema = new Schema({
         required: true,
         type: String
     },
-    password: {
-        required: false,
-        type: String
-    },
+    favorites: [{ type: Types.ObjectId, ref: 'Album' }],
     authSource: {
         enum: ["self", "google"],
     }

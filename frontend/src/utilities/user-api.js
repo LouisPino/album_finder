@@ -35,3 +35,21 @@ export async function getUserByEmail(email) {
         return new Error("Invalid Request");
     }
 }
+
+export async function updateUser(user) {
+    const res = await fetch(`${BASE_URL}/users/${user._id}`, {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": true,
+        },
+        body: JSON.stringify(user)
+    });
+    if (res.ok) {
+        return res.json();
+    } else {
+        return new Error("Invalid Request");
+    }
+}

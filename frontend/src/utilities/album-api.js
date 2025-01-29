@@ -37,6 +37,8 @@ export async function create(data) {
 
 
 export async function getUserAlbums(user) {
+    console.log(user)
+
     const res = await fetch(`${BASE_URL}/albums/${user.email}`, {
         method: "GET",
         credentials: "include",
@@ -52,6 +54,21 @@ export async function getUserAlbums(user) {
     }
 }
 
+export async function getUserSavedAlbumsById(user) {
+    const res = await fetch(`${BASE_URL}/albums/saved/${user._id}`, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+    });
+    if (res.ok) {
+        return res.json();
+    } else {
+        return new Error("Invalid Request");
+    }
+}
 
 export async function deleteAlbumById(id) {
     const res = await fetch(`${BASE_URL}/albums/${id}`, {
