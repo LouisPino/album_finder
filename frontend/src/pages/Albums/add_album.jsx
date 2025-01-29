@@ -47,8 +47,9 @@ export default function AddAlbum({ user }) {
                 }
             }
             tempObj[e.target.name] = values
-        } else if (e.target.name === "catergories") {
+        } else if (e.target.name === "categories") {
             tempObj.categories = getCategoriesChecked()
+            console.log(tempObj.categories)
         }
         setAlbumInfo(tempObj)
     }
