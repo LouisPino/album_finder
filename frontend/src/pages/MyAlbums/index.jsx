@@ -18,9 +18,6 @@ export default function MyAlbums({ user }) {
         }
     }
 
-    function handleEdit(e) {
-
-    }
 
     function handleRemove(e) {
         deleteAlbumById(e.target.name)
@@ -31,9 +28,9 @@ export default function MyAlbums({ user }) {
         return (<div className="my-card">
             <AlbumCard album={album} />
             <Link to={`/albums/edit/${album._id}`}>
-                <button onClick={handleEdit} name={album._id} className="edit-btn">EDIT</button>
+                <button name={album._id} className="edit-btn">EDIT</button>
             </Link >
-            <button name={album._id} className="remove-btn">REMOVE</button>
+            <button onClick={handleRemove} name={album._id} className="remove-btn">REMOVE</button>
         </div >
         )
     })
