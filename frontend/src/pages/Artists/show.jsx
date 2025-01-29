@@ -3,6 +3,7 @@ import { findByArtist } from "../../utilities/artist-service";
 import AlbumCard from "../../components/AlbumCard";
 import { useEffect, useState } from "react";
 
+
 export default function Artist({ user }) {
     const [albums, setAlbums] = useState(null)
     const location = useLocation()
@@ -24,7 +25,6 @@ export default function Artist({ user }) {
         albums ?
             <section className="artist-page">
                 <div className="albums">
-
                     {albumEls}
                 </div>
             </section>

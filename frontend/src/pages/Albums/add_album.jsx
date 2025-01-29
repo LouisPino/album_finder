@@ -70,7 +70,6 @@ export default function AddAlbum({ user }) {
     const [albumInfo, setAlbumInfo] = useState(blankAlbum)
 
     async function handleClick() {
-        console.log(albumInfo.categories.length)
         for (let key of Object.keys(albumInfo)) {
             if (!albumInfo[key] && key != "uploader" && key != "email") {
                 alert(`Must fill all fields`)

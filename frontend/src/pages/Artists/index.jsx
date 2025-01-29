@@ -1,36 +1,45 @@
 import { getArtists, findByArtist } from "../../utilities/artist-service";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import("./style.css");
 
 export default function Artists() {
-    const [artists, setArtists] = useState(null)
+    const [artists, setArtists] = useState(null);
+
     useEffect(() => {
-        handleRequest()
-    }, [])
+        handleRequest();
+    }, []);
 
-    async function getfindByArtist(e) {
-        console.log(await findByArtist(e.target.name))
-    }
     async function handleRequest() {
-        const artistResp = await getArtists()
-
+        const artistResp = await getArtists();
         if (artistResp.length) {
             setArtists(artistResp);
         }
     }
 
-    const artistEls = artists?.map((artist) => (
-        <Link to={`${artist}`} >
-            <p>{artist}</p>
-        </Link>
+    if (!artists) {
+        return "LOADING";
+    }
 
-    ))
+    let tempLetter = "z";
+    let artistEls = [];
+
+    for (let artist of artists) {
+        if (artist[0] !== tempLetter) {
+            artistEls.push(<h2 key={artist[0]}>{artist[0]}</h2>);
+            tempLetter = artist[0];
+        }
+        artistEls.push(
+            <Link key={artist} to={`${artist}`}>
+                <p>{artist}</p>
+            </Link>
+        );
+    }
+
     return (
-        artists ?
-            <section className="artists-page">
-                {artistEls}
-            </section>
-
-            : "LOADING"
-    )
+        <section className="artists-page">
+            <h2>Artists found here</h2>
+            {artistEls}
+        </section>
+    );
 }

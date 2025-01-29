@@ -102,11 +102,22 @@ export default function EditAlbum({ user }) {
     async function handleClick() {
         let album = albumInfo
         album._id = id
+        for (let key of Object.keys(albumInfo)) {
+            if (!albumInfo[key] && key != "uploader" && key != "email" && key != "__v") {
+                alert(`${key} Must fill all fields`)
+                return
+            } else if (albumInfo.categories.length === 0) {
+                alert(` Must choose at least one category`)
+                return
+            } else if (isNaN(albumInfo.release_year)) {
+                alert(` Release year must be an integer`)
+                return
+            }
+        }
         editAlbum(album)
-        navigate("/users")
+        navigate(`/users/${user.email}`)
     }
     if (albumInfo) {
-
         const fieldELs = Object.keys(blankAlbum).map((key) => {
             if (key === "categories") {
                 return (
