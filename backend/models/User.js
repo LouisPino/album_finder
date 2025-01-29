@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
-const { Schema } = mongoose;
-const userSchema = Schema({
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const userSchema = new Schema({
     email: {
         required: true,
         unique: true,
@@ -16,7 +17,6 @@ const userSchema = Schema({
     },
     authSource: {
         enum: ["self", "google"],
-        default: "self"
     }
 });
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model('User', userSchema); 
