@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require("dotenv").config();
 require('./config/database.js')
-
+const FRONTEND_URL = process.env.FRONTEND_URL
 
 // Create an instance of OAuth2Client
 
@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use(cors({
-  origin: 'https://6per.netlify.app', // Allow only your frontend
+  origin: FRONTEND_URL, // Allow only your frontend
   methods: 'GET,POST,PUT,DELETE,OPTIONS',
   allowedHeaders: 'Content-Type,Authorization',
   credentials: true, // If you're using cookies or authentication
