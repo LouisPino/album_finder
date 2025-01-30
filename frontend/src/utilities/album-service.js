@@ -2,9 +2,7 @@ import * as albumAPI from './album-api';
 
 export async function getAlbums() {
     try {
-        console.log("try")
         const data = await albumAPI.index()
-        console.log("data", data)
         return data
     } catch (err) {
         console.log("err", err)
