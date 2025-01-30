@@ -35,7 +35,6 @@ async function signIn(req, res) {
         const token = jwt.sign({ userId: user._id, email: user.email }, JWT_SECRET, {
             expiresIn: '1h', // Adjust expiration time as needed
         });
-        console.log("hit")
 
         // Send the token as a cookie and response
         res

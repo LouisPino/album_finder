@@ -61,7 +61,6 @@ async function getAlbumById(req, res) {
 }
 
 async function editAlbum(req, res) {
-    console.log(req.body)
     try {
         res.status(200).json(await Album.findByIdAndUpdate(req.params.id, req.body));
     } catch (error) {
