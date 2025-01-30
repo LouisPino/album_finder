@@ -5,6 +5,8 @@ const JWT_SECRET = process.env.JWT_SECRET;
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const client = new OAuth2Client(GOOGLE_CLIENT_ID);
 const BASE_URL = process.env.BASE_URL
+const CLIENT_SECRET = process.env.BASE_URL
+
 module.exports = {
     signIn,
     getUserById,
@@ -49,6 +51,7 @@ async function signIn(req, res) {
             code,
             redirect_uri: `${BASE_URL}/oauth`,  // Make sure the redirect URI matches the one in your Google OAuth configuration
             client_id: client_id,
+            client_secret: CLIENT_SECRET,
         });
 
         console.log(tokens);  // Log tokens to inspect them
