@@ -46,13 +46,14 @@ module.exports = {
 
 async function signIn(req, res) {
     const { code, client_id } = req.body;
-    console.log(CLIENT_SECRET)
     try {
         const { tokens } = await client.getToken({
             code,
-            redirect_uri: `${BASE_URL}/oauth`,  // Make sure the redirect URI matches the one in your Google OAuth configuration
+            redirect_uri: `${BASE_URL}/oauth`,
             client_id: client_id,
             client_secret: CLIENT_SECRET,
+            grant_type: "authorization_code"
+
         });
 
         console.log(tokens);  // Log tokens to inspect them
