@@ -9,9 +9,9 @@ router.get('/:email', albumCtrl.getAlbumsByEmail)
 router.get('/saved/:id', albumCtrl.getUserSavedAlbumsById)
 router.get('/id/:id', albumCtrl.getAlbumById)
 
-router.put('/edit/:id', cors(), albumCtrl.editAlbum)
+router.put('/edit/:id', albumCtrl.editAlbum)
 
-router.delete('/:id', cors(), albumCtrl.deleteAlbumById)
+router.delete('/:id', albumCtrl.deleteAlbumById)
 
 
 router.post('/create', albumCtrl.create)
