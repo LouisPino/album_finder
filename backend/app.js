@@ -9,16 +9,16 @@ require("dotenv").config();
 // require('./config/database.js')
 require(path.join(__dirname, 'config', 'database.js'));
 const FRONTEND_URL = process.env.FRONTEND_URL
-// Create an instance of OAuth2Client
+
+console.log(FRONTEND_URL)
 
 var app = express();
-// app.use(cors({
-//   origin: FRONTEND_URL, // Allow only your frontend
-//   methods: 'GET, POST, PUT , DELETE, OPTIONS',
-//   allowedHeaders: 'Content-Type, Authorization',
-//   credentials: true, // If you're using cookies or authentication
-// }));
-app.use(cors());
+app.use(cors({
+  origin: FRONTEND_URL, // Allow only your frontend
+  methods: 'GET, POST, PUT , DELETE, OPTIONS',
+  allowedHeaders: 'Content-Type, Authorization',
+  credentials: true, // If you're using cookies or authentication
+}));
 
 
 var indexRouter = require('./routes/index');
