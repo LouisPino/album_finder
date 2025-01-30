@@ -19,6 +19,7 @@ async function create(req, res) {
 }
 
 async function index(req, res) {
+    console.log("hit index function")
     try {
         res.status(200).json(await Album.find());
     } catch (error) {

@@ -10,7 +10,6 @@ require("dotenv").config();
 require(path.join(__dirname, 'config', 'database.js'));
 const FRONTEND_URL = process.env.FRONTEND_URL
 
-console.log(FRONTEND_URL)
 
 var app = express();
 app.use(cors({
