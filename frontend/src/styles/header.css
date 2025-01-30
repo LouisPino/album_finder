@@ -5,5 +5,26 @@
 }
 
 .header-link {
+    padding: 12px;
+    text-decoration: none;
+}
+
+
+.header-link:hover .link-text {
+    color: white;
+}
+
+.header-link:hover {
+    background-color: black;
+
+}
+
+.header-link:visited {
     margin: 0 12px;
+    color: black;
+}
+
+.link-text {
+    display: inline;
+    font-size: 24px;
 }

@@ -3,3 +3,15 @@
     flex-direction: column;
     min-height: 100vh;
 }
+
+button {
+    font-size: larger;
+    color: black;
+    background-color: white;
+    padding: 12px;
+}
+
+button:hover {
+    color: white;
+    background-color: black;
+}

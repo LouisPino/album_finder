@@ -11,16 +11,16 @@ export default function Header({ user, setUser }) {
     return (
         <div className="header ">
             <div className="header-l">
-                <Link className="header-link" to="/">Home</Link>
-                <Link className="header-link" to="/albums">Albums</Link>
-                <Link className="header-link" to="/artists">Artists</Link>
-                <Link className="header-link" to="/random">Pick a Random Album</Link>
+                <Link className="header-link" to="/"><p className="link-text">Home</p></Link>
+                <Link className="header-link" id="albums-header" to="/albums"><p className="link-text">Music</p></Link>
+                <Link className="header-link" to="/artists"><p className="link-text">Artists</p></Link>
+                <Link className="header-link" to="/random"><p className="link-text">Random Album</p></Link>
             </div>
             {user ?
                 <div className="header-r">
                     <Link className="header-link" to="/albums/add">Add Album</Link>
                     <Link className="header-link" to={`/users/${user._id}`}>My Albums</Link>
-                    <Link onClick={() => { setUser(null) }}>Log Out</Link>
+                    <Link className="header-link" onClick={() => { setUser(null) }}>Log Out</Link>
                 </div>
                 :
                 <div className="header-r">

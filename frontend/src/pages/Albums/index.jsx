@@ -20,7 +20,17 @@ export default function Albums({ user }) {
     setFilters(newFilters)
   }, [])
 
+  useEffect(() => {
+    const albumsHeaderEl = document.getElementById("albums-header");
 
+    if (albumsHeaderEl) {
+      const handleShuffle = () => shuffleAlbums();
+      albumsHeaderEl.addEventListener("click", handleShuffle);
+      return () => {
+        albumsHeaderEl.removeEventListener("click", handleShuffle);
+      };
+    }
+  }, []);
   const categoryEls = filters ? categories.map((cat) => (
     <>
       <input onClick={handleTick} value={cat} type="checkbox" checked={filters[cat]}></input>
@@ -29,18 +39,27 @@ export default function Albums({ user }) {
   )) : ""
 
   function shuffleArray(array) {
-    for (var i = array.length - 1; i >= 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
     }
   }
+
+  function shuffleAlbums() {
+    console.log("shuffle")
+    setAlbums(prevAlbums => {
+      let tempAlbums = [...prevAlbums];
+      shuffleArray(tempAlbums);
+      return tempAlbums;
+    });
+  }
+
+
   async function handleRequest() {
     const albumsResp = await getAlbums()
     if (albumsResp.length) {
       shuffleArray(albumsResp)
-      setAlbums(albumsResp);
+      setAlbums(albumsResp)
     }
   }
 
