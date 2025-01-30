@@ -6,7 +6,7 @@ const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const BASE_URL = process.env.BASE_URL
 const CLIENT_SECRET = process.env.CLIENT_SECRET
 const client = new OAuth2Client({
-    clientId: GOOGLE_CLIENT_ID, clientSecret: CLIENT_SECRET, redirectUri: `http://sixper-09b5db983bf5.herokuapp.com/oauth`
+    clientId: GOOGLE_CLIENT_ID, clientSecret: CLIENT_SECRET, redirectUri: `postmessage`
 });
 
 module.exports = {
