@@ -17,7 +17,6 @@ router.get('/', function (req, res, next) {
 router.get('/oauth', async (req, res) => {
   // Extract the code from the query parameters
   const code = req.query.code;
-  console.log("hit")
   console.log(code)
   // Use this code to exchange it for an access token
   try {
