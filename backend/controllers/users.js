@@ -50,6 +50,7 @@ async function signIn(req, res) {
     const { code, client_id } = req.body;
     try {
         const { tokens } = await client.getToken({
+            code: code
         });
 
         console.log(tokens);  // Log tokens to inspect them

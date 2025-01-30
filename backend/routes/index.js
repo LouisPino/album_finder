@@ -18,9 +18,10 @@ router.get('/oauth', async (req, res) => {
   // Extract the code from the query parameters
   const code = req.query.code;
   console.log("hit")
+  console.log(code)
   // Use this code to exchange it for an access token
   try {
-    const { tokens } = await client.getToken({ code: code });
+    const { tokens } = await client.getToken(code);
     client.setCredentials(tokens);
     console.log(tokens)
     // Now you can use the tokens to make authenticated API requests
