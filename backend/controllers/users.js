@@ -5,7 +5,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const client = new OAuth2Client(GOOGLE_CLIENT_ID);
 const BASE_URL = process.env.BASE_URL
-const CLIENT_SECRET = process.env.BASE_URL
+const CLIENT_SECRET = process.env.CLIENT_SECRET
 
 module.exports = {
     signIn,
