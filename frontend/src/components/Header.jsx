@@ -28,7 +28,7 @@ export default function Header({ user, setUser }) {
                 :
                 <div className="header-r">
                     <GoogleOAuthProvider clientId={clientId} >
-                        <GoogleAuth user={user} setUser={setUser} useGoogleLogin={useGoogleLogin} />
+                        <GoogleAuth user={user} setUser={setUser} clientId={clientId} useGoogleLogin={useGoogleLogin} />
                     </ GoogleOAuthProvider>
 
                 </div>
