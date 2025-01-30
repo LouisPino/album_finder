@@ -19,3 +19,10 @@ button:hover {
 .loading {
     text-align: center;
 }
+
+@media screen and (max-width: 650px) {
+    button {
+        border: 1px solid black;
+
+    }
+}
