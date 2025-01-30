@@ -45,20 +45,48 @@ module.exports = {
 //         res.status(400).json({ error: 'Authentication failed', details: err });
 //     }
 // }
-
 async function signIn(req, res) {
     const { code, client_id } = req.body;
     try {
+        // Step 1: Get the tokens by exchanging the code
         const { tokens } = await client.getToken({
             code: code
         });
-
         console.log("tokens", tokens);  // Log tokens to inspect them
-        res.json(tokens);  // Send tokens back to the frontend
 
-    } catch (err) {
-        console.error('Error during Google Authentication:', err);
-        res.status(400).json({ error: 'Authentication failed', details: err });
+        // Step 2: Verify the ID token to get user information
+        const ticket = await client.verifyIdToken({
+            idToken: tokens.id_token,  // Use the ID token received in the OAuth flow
+            audience: client_id,       // Make sure the audience matches your client ID
+        });
+
+        const payload = ticket.getPayload();  // Contains user details
+        console.log("payload", payload);
+
+        const { email, given_name, family_name } = payload;
+
+        // Step 3: Check if the user already exists in the database
+        let user = await User.findOne({ email: email });
+
+        if (!user) {
+            // Step 4: Create a new user if they don't exist
+            user = await User.create({
+                email,
+                name: `${given_name} ${family_name}`,
+                authSource: 'google',  // You can store the auth source (Google) for reference
+            });
+        }
+
+        // Step 5: Respond to the client with user information
+        res.status(200).json({
+            message: 'Authentication successful',
+            user,
+            tokens,  // Optionally, send back the tokens if needed (access token, refresh token, etc.)
+        });
+
+    } catch (error) {
+        console.error('Authentication error:', error);
+        res.status(500).json({ message: 'Authentication failed', error: error.message });
     }
 }
 
