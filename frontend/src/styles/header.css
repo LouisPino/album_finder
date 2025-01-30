@@ -65,7 +65,9 @@ a {
     .header-r {
         margin: 0;
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: end;
+        z-index: 100;
     }
 
     .header-r>div>div>div>div {
@@ -78,6 +80,11 @@ a {
 
     .header-r>div>div>div>div>div {
         background-color: black;
+        color: white;
+        font-size: small;
+    }
+
+    .header-r>div>div>div>div>span {
         color: white;
         font-size: small;
     }
