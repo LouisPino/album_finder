@@ -6,7 +6,7 @@ const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const BASE_URL = process.env.BASE_URL
 const CLIENT_SECRET = process.env.CLIENT_SECRET
 const client = new OAuth2Client({
-    clientId: GOOGLE_CLIENT_ID, clientSecret: CLIENT_SECRET, redirectUri: `${BASE_URL}/oauth`
+    clientId: GOOGLE_CLIENT_ID, clientSecret: CLIENT_SECRET, redirectUri: `https://sixper-09b5db983bf5.herokuapp.com/oauth`
 });
 
 module.exports = {
@@ -50,11 +50,6 @@ async function signIn(req, res) {
     const { code, client_id } = req.body;
     try {
         const { tokens } = await client.getToken({
-            code,
-            redirect_uri: `https://sixper-09b5db983bf5.herokuapp.com/oauth`,
-            client_id: client_id,
-            grant_type: "authorization_code"
-
         });
 
         console.log(tokens);  // Log tokens to inspect them
