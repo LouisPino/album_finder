@@ -36,7 +36,8 @@ export default function MyAlbums({ user }) {
     }
 
     async function getProfile() {
-        const profileResp = await getUserById(user._id);
+        console.log(location.pathname.split("/")[location.pathname.split("/").length - 1])
+        const profileResp = await getUserById(location.pathname.split("/")[location.pathname.split("/").length - 1]);
         if (profileResp.length) {
             setProfile(profileResp[0]);
         }
@@ -57,9 +58,9 @@ export default function MyAlbums({ user }) {
                             <div key={album._id} className="my-card">
                                 <AlbumCard album={album} user={user} />
                                 <Link to={`/albums/edit/${album._id}`}>
-                                    {user.email === profile?.email && <button className="edit-btn">EDIT</button>}
+                                    {user?.email === profile?.email && <button className="edit-btn">EDIT</button>}
                                 </Link>
-                                {user.email === profile?.email && (
+                                {user?.email === profile?.email && (
                                     <button onClick={handleRemove} name={album._id} className="remove-btn">
                                         REMOVE
                                     </button>
@@ -77,9 +78,9 @@ export default function MyAlbums({ user }) {
                             <div key={album._id} className="my-card">
                                 <AlbumCard album={album} user={user} />
                                 <Link to={`/albums/edit/${album._id}`}>
-                                    {user.email === profile?.email && <button className="edit-btn">EDIT</button>}
+                                    {user?.email === profile?.email && <button className="edit-btn">EDIT</button>}
                                 </Link>
-                                {user.email === profile?.email && (
+                                {user?.email === profile?.email && (
                                     <button onClick={handleRemove} name={album._id} className="remove-btn">
                                         REMOVE
                                     </button>

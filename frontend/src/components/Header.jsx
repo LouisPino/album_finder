@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router";
+import { useLocation } from "react-router";
 import GoogleAuth from './GoogleAuth';
 
 import("../styles/header.css")
 
 export default function Header({ user, setUser }) {
-    const navigate = useNavigate()
 
 
     return (
@@ -20,7 +19,7 @@ export default function Header({ user, setUser }) {
             {user ?
                 <div className="header-r">
                     <Link className="header-link" to="/albums/add">Add Album</Link>
-                    <Link className="header-link" to={`/users/${user.id}`}>My Albums</Link>
+                    <Link className="header-link" to={`/users/${user._id}`}>My Albums</Link>
                     <Link onClick={() => { setUser(null) }}>Log Out</Link>
                 </div>
                 :
