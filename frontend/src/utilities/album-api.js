@@ -8,8 +8,6 @@ export async function index() {
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": true,
-
         },
     });
     if (res.ok) {
@@ -38,7 +36,6 @@ export async function create(data) {
 
 
 export async function getUserAlbums(user) {
-
     const res = await fetch(`${BASE_URL}/albums/${user.email}`, {
         method: "GET",
         credentials: "include",
