@@ -13,7 +13,10 @@ export default function Artists() {
     async function handleRequest() {
         const artistResp = await getArtists();
         if (artistResp.length) {
-            setArtists(artistResp);
+            let sortedArtists = [...artistResp].sort((a, b) =>
+                a[0].toUpperCase().localeCompare(b[0].toUpperCase())
+            );
+            setArtists(sortedArtists);
         }
     }
 
@@ -24,10 +27,11 @@ export default function Artists() {
     let tempLetter = "z";
     let artistEls = [];
 
+
     for (let artist of artists) {
-        if (artist[0] !== tempLetter) {
-            artistEls.push(<h2 key={artist[0]}>{artist[0]}</h2>);
-            tempLetter = artist[0];
+        if (artist[0].toUpperCase() !== tempLetter) {
+            artistEls.push(<h2 key={artist[0].toUpperCase()}>{artist[0].toUpperCase()}</h2>);
+            tempLetter = artist[0].toUpperCase();
         }
         artistEls.push(
             <Link key={artist} to={`${artist}`}>
