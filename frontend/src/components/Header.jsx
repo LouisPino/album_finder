@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
 import GoogleAuth from './GoogleAuth';
+import { GoogleLogin, GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google';
+
 
 import("../styles/header.css")
 
 export default function Header({ user, setUser }) {
+    const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID
 
 
     return (
@@ -24,7 +27,10 @@ export default function Header({ user, setUser }) {
                 </div>
                 :
                 <div className="header-r">
-                    <GoogleAuth user={user} setUser={setUser} />
+                    <GoogleOAuthProvider clientId={clientId} >
+                        <GoogleAuth user={user} setUser={setUser} useGoogleLogin={useGoogleLogin} />
+                    </ GoogleOAuthProvider>
+
                 </div>
             }
         </div >
