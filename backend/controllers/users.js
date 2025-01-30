@@ -48,6 +48,7 @@ module.exports = {
 
 async function signIn(req, res) {
     const { code, client_id } = req.body;
+    console.log("log", client)
     try {
         const { tokens } = await client.getToken({
             code: code
