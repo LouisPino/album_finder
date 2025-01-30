@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { DATABASE_URI } = process.env
+console.log("YOU HAVE HIT ME")
 
 
 mongoose.set('strictQuery', true);

@@ -8,7 +8,6 @@ var logger = require('morgan');
 require("dotenv").config();
 // require('./config/database.js')
 require(path.join(__dirname, 'config', 'database.js'));
-console.log("YOU HAVE HIT ME")
 const FRONTEND_URL = process.env.FRONTEND_URL
 // Create an instance of OAuth2Client
 
