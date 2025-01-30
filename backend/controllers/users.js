@@ -54,9 +54,21 @@ module.exports = {
 //     }
 // }
 async function signIn(req, res) {
-    const { tokens } = await client.getToken(req.body.code); // exchange code for tokens
-    console.log(tokens);
-    res.json(tokens);
+    const { code, client_id } = req.body;
+    try {
+        const { tokens } = await client.getToken({
+            code,
+            redirect_uri: `${BASE_URL}/oauth`,  // Make sure the redirect URI matches the one in your Google OAuth configuration
+            client_id: client_id,
+        });
+
+        console.log(tokens);  // Log tokens to inspect them
+        res.json(tokens);  // Send tokens back to the frontend
+
+    } catch (err) {
+        console.error('Error during Google Authentication:', err);
+        res.status(400).json({ error: 'Authentication failed', details: err });
+    }
 }
 
 
