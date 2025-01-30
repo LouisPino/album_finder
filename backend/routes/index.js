@@ -8,7 +8,7 @@ router.get('/', function (req, res, next) {
 });
 
 
-app.get('/oauth', async (req, res) => {
+router.get('/oauth', async (req, res) => {
   // Extract the code from the query parameters
   const code = req.query.code;
 
