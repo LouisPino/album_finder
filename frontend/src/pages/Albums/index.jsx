@@ -8,9 +8,7 @@ export default function Albums({ user }) {
   const [albums, setAlbums] = useState(null);
   const [filters, setFilters] = useState(null)
   const categories = ["noise", "ambient", "improvisation", "acoustic", "electronic", "vocal"]
-  useEffect(() => {
-    console.log(user)
-  }, [])
+
   useEffect(() => {
     handleRequest()
     let newFilters = categories.reduce((acc, cat) => {
@@ -46,7 +44,6 @@ export default function Albums({ user }) {
   }
 
   function shuffleAlbums() {
-    console.log("shuffle")
     setAlbums(prevAlbums => {
       let tempAlbums = [...prevAlbums];
       shuffleArray(tempAlbums);
