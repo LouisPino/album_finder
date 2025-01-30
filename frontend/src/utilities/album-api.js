@@ -10,6 +10,7 @@ export async function index() {
             "Content-Type": "application/json",
         },
     });
+    console.log(res.json())
     if (res.ok) {
         return res.json();
     } else {
@@ -24,7 +25,6 @@ export async function create(data) {
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": true,
         },
         body: JSON.stringify(data)
     });
@@ -37,7 +37,6 @@ export async function create(data) {
 
 
 export async function getUserAlbums(user) {
-    console.log(user)
 
     const res = await fetch(`${BASE_URL}/albums/${user.email}`, {
         method: "GET",

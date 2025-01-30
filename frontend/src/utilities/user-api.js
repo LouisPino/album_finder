@@ -8,7 +8,6 @@ export async function create(data) {
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": true,
         },
         body: JSON.stringify(data)
     });
@@ -26,7 +25,6 @@ export async function getUserByEmail(email) {
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": true,
         },
     });
     if (res.ok) {
@@ -43,7 +41,6 @@ export async function updateUser(user) {
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": true,
         },
         body: JSON.stringify(user)
     });

@@ -23,11 +23,9 @@ export default function MyAlbums({ user }) {
     }, [profile]);
 
     useEffect(() => {
-        console.log(albums)
     }, [albums]);
 
     useEffect(() => {
-        console.log(savedAlbums)
     }, [savedAlbums]);
 
     async function handleLoad() {

@@ -56,7 +56,6 @@ export default function EditAlbum({ user }) {
     }
 
     function handleInput(e) {
-        console.log(e.target.value)
         let tempAlbum = { ...albumInfo }
         if (e.target.name != "categories" && e.target.name != "artist") {
             tempAlbum[e.target.name] = e.target.value
