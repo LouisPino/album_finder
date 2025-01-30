@@ -14,7 +14,7 @@ import("./styles/footer.css");
 import("./App.css");
 
 function App() {
-  const [user, setUser] = useState(false)
+  const [user, setUser] = useState(null)
 
   return (
     <div className="App">

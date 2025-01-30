@@ -18,8 +18,8 @@ export async function create(data) {
     }
 }
 
-export async function getUserByEmail(email) {
-    const res = await fetch(`${BASE_URL}/users/${email}`, {
+export async function getUserById(id) {
+    const res = await fetch(`${BASE_URL}/users/${id}`, {
         method: "GET",
         credentials: "include",
         headers: {

@@ -8,8 +8,7 @@ import("../styles/header.css")
 export default function Header({ user, setUser }) {
     const navigate = useNavigate()
 
-    useEffect(() => {
-    }, [])
+
     return (
         <div className="header ">
             <div className="header-l">
@@ -21,7 +20,7 @@ export default function Header({ user, setUser }) {
             {user ?
                 <div className="header-r">
                     <Link className="header-link" to="/albums/add">Add Album</Link>
-                    <Link className="header-link" to={`/users/${user.email}`}>My Albums</Link>
+                    <Link className="header-link" to={`/users/${user.id}`}>My Albums</Link>
                     <Link onClick={() => { setUser(null) }}>Log Out</Link>
                 </div>
                 :

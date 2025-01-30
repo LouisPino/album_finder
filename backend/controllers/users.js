@@ -7,7 +7,7 @@ const client = new OAuth2Client(GOOGLE_CLIENT_ID);
 
 module.exports = {
     signIn,
-    getUserByEmail,
+    getUserById,
     updateUser
 };
 async function signIn(req, res) {
@@ -50,9 +50,9 @@ async function signIn(req, res) {
         res.status(400).json({ error: 'Authentication failed', details: err });
     }
 }
-async function getUserByEmail(req, res) {
+async function getUserById(req, res) {
     try {
-        res.status(200).json(await User.find({ email: req.params.email }));
+        res.status(200).json(await User.find({ id: req.params.id }));
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

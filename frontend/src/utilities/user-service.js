@@ -1,8 +1,8 @@
 import * as userAPI from './user-api';
 
-export async function getUserByEmail(email) {
+export async function getUserById(id) {
     try {
-        const data = await userAPI.getUserByEmail(email)
+        const data = await userAPI.getUserById(id)
         return data
     } catch (err) {
         return err

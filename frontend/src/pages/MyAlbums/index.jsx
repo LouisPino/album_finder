@@ -1,5 +1,5 @@
 import { getUserAlbums, deleteAlbumById, getUserSavedAlbumsById } from "../../utilities/album-service";
-import { getUserByEmail } from "../../utilities/user-service";
+import { getUserById } from "../../utilities/user-service";
 import { useEffect, useState } from "react";
 import AlbumCard from "../../components/AlbumCard";
 import { Link, useLocation } from "react-router-dom";
@@ -36,7 +36,7 @@ export default function MyAlbums({ user }) {
     }
 
     async function getProfile() {
-        const profileResp = await getUserByEmail(location.pathname.split("/").pop());
+        const profileResp = await getUserById(user._id);
         if (profileResp.length) {
             setProfile(profileResp[0]);
         }
