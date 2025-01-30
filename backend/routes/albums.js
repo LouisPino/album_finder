@@ -1,11 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var cors = require('cors')
 
 const albumCtrl = require("../controllers/albums")
 
 /* GET users listing. */
-router.get('/', cors(), albumCtrl.index)
+router.get('/', albumCtrl.index)
 router.get('/:email', albumCtrl.getAlbumsByEmail)
 router.get('/saved/:id', albumCtrl.getUserSavedAlbumsById)
 router.get('/id/:id', albumCtrl.getAlbumById)

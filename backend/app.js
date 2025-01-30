@@ -6,7 +6,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require("dotenv").config();
-require('./config/database.js')
+// require('./config/database.js')
+require(path.join(__dirname, 'config', 'database.js'));
+
 const FRONTEND_URL = process.env.FRONTEND_URL
 // Create an instance of OAuth2Client
 
