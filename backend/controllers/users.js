@@ -54,7 +54,7 @@ module.exports = {
 //     }
 // }
 async function signIn(req, res) {
-    const { tokens } = await oAuth2Client.getToken(req.body.code); // exchange code for tokens
+    const { tokens } = await client.getToken(req.body.code); // exchange code for tokens
     console.log(tokens);
 
     // try {
