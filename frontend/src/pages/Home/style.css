@@ -7,3 +7,57 @@
     flex-direction: column;
     align-items: center;
 }
+
+.home-info {
+    display: flex;
+    border: 1px solid black;
+    width: 50vw;
+
+}
+
+.home-info-l {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    /* width: 50%; */
+    padding: 12px;
+}
+
+.home-top-text {
+    font-size: larger;
+}
+
+/* .home-info-r {
+    display: flex;
+    border: 1px solid black;
+    width: 50%;
+    flex-direction: column;
+    padding: 12px;
+
+
+
+} */
+
+.home-info-r>p {
+    margin: 4px;
+}
+
+#mech-forest {
+    font-size: 28px;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+/* 
+.home-info-l-top {
+    display: flex;
+    border: 1px solid black;
+    height: 50%;
+} */
+
+/* 
+.home-info-l-bottom {
+    height: 50%;
+    display: flex;
+    border: 1px solid black;
+} */

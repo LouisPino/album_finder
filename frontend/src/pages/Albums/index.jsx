@@ -32,10 +32,10 @@ export default function Albums({ user }) {
     }
   }, []);
   const categoryEls = filters ? categories.map((cat) => (
-    <>
+    <div className="filter-category">
       <input onClick={handleTick} value={cat} type="checkbox" checked={filters[cat]}></input>
       <label>{cat}</label>
-    </>
+    </div>
   )) : ""
 
   function shuffleArray(array) {
@@ -99,7 +99,7 @@ export default function Albums({ user }) {
       </div>
     </section>
     : <>
-      "LOADING"
+      <h4 className="loading">HACKIN' A DART BE RIGHT BACK</h4>
     </>
   )
 }

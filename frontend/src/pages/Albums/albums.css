@@ -10,7 +10,6 @@
     align-items: center;
     text-align: center;
     width: 25vw;
-    border: 1px solid red;
     padding: 8px;
     position: relative;
     margin: 16px;
@@ -24,6 +23,19 @@
 
 .album-image {
     width: 100%;
+}
+
+fieldset {
+    margin: 0;
+    border-radius: 1px;
+    margin-bottom: 8px;
+}
+
+.add-artist-btn {
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    padding: 0;
 }
 
 .add-filters {
@@ -47,6 +59,10 @@
 
 .filter-div {
     text-align: center;
+    border: 1px solid black;
+    padding: 8px;
+    width: fit-content;
+    margin: 0 auto;
 }
 
 .filter {
@@ -59,10 +75,17 @@
 
 .filters {
     display: inline;
+    font-size: larger;
 }
 
 .filter-title {
     display: inline;
+    font-size: larger;
+}
+
+.filter-category {
+    display: inline;
+    margin: 0 8px;
 }
 
 .album-heart {

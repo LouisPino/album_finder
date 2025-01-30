@@ -11,11 +11,12 @@ export default function GoogleAuth({ user, setUser }) {
                     const res = await create(credentialResponse)
                     const user = res.user
                     setUser(user)
-                }}
+                }
+                }
                 onError={() => {
                     console.log('Login Failed');
                 }}
             />
-        </GoogleOAuthProvider>
+        </GoogleOAuthProvider >
     );
 };

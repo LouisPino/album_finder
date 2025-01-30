@@ -21,7 +21,8 @@ export default function Artists() {
     }
 
     if (!artists) {
-        return "LOADING";
+        return <h4 className="loading">HACKIN' A DART BE RIGHT BACK</h4>
+            ;
     }
 
     let tempLetter = "z";
@@ -30,19 +31,18 @@ export default function Artists() {
 
     for (let artist of artists) {
         if (artist[0].toUpperCase() !== tempLetter) {
-            artistEls.push(<h2 key={artist[0].toUpperCase()}>{artist[0].toUpperCase()}</h2>);
+            artistEls.push(<h2 className="artist-letter" key={artist[0].toUpperCase()}>{artist[0].toUpperCase()}</h2>);
             tempLetter = artist[0].toUpperCase();
         }
         artistEls.push(
-            <Link key={artist} to={`${artist}`}>
-                <p>{artist}</p>
+            <Link key={artist} className="artist-name-link" to={`${artist}`}>
+                <p className="artist-name">{artist}</p>
             </Link>
         );
     }
 
     return (
         <section className="artists-page">
-            <h2>Artists found here</h2>
             {artistEls}
         </section>
     );

@@ -40,7 +40,7 @@ export default function EditAlbum({ user }) {
     const categoryOptions = categories.map((category) => (
         <>
             <input onChange={handleInput} className="category-select" type="checkbox" id={category} name="categories" value={category} checked={albumInfo?.categories.includes(category) ? "on" : ""} />
-            <label className="checkbox-label" htmlFor={category}>{category}</label>
+            <label className="checkbox-label" htmlFor={category}>{toTitleCase(category)}</label>
         </>
     ))
 
@@ -82,6 +82,17 @@ export default function EditAlbum({ user }) {
         newEl.name = "artist"
         newEl.addEventListener("input", handleInput)
         addArtistEl.parentElement.insertBefore(newEl, addArtistEl)
+    }
+
+    function toTitleCase(str) {
+        return str
+            .toLowerCase() // Convert the whole string to lowercase first
+            .split(' ') // Split the string into an array of words
+            .map(word => {
+                // Capitalize the first letter and keep the rest lowercase
+                return word.charAt(0).toUpperCase() + word.slice(1);
+            })
+            .join(' '); // Join the words back into a single string
     }
 
     function loadArtists() {
@@ -131,7 +142,7 @@ export default function EditAlbum({ user }) {
                 )
             } else if (key === "artist") {
                 return (<>
-                    <label>artists</label>
+                    <label>Artists</label>
                     <div className="artists-field filter" >
                         <button className="add-artist-btn" onClick={handleAddArtist}> + </button>
                     </div>
@@ -140,7 +151,9 @@ export default function EditAlbum({ user }) {
             } else {
                 return (
                     <>
-                        <label>{key}</label>
+                        {key != "image" && key != "link" && <label>{toTitleCase(key.split("_").join(" "))}</label>}
+                        {key === "image" && <label>Image Link (right click and copy image address)</label>}
+                        {key === "link" && <label>Link to music</label>}
                         <input className="filter" name={key} onChange={handleInput} value={albumInfo[key]}></input>
                     </>
                 )

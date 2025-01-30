@@ -1,0 +1,19 @@
+.my-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.my-albums-title {
+    text-align: center;
+}
+
+.my-card h4 {
+    margin: 0;
+}
+
+.my-card button {
+    font-size: small;
+    padding: 2px;
+    margin: 8px;
+}

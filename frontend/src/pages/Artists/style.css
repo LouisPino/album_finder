@@ -3,3 +3,26 @@
     flex-direction: column;
     align-items: center;
 }
+
+.artist-letter {
+    margin: 22px 0 2px 0px;
+}
+
+.artist-name-link {
+    text-decoration: underline;
+    color: black;
+    font-size: larger;
+}
+
+.artist-name {
+    margin: 8px 0;
+}
+
+.artist-name:visited {
+    text-decoration: none;
+}
+
+.artist-title {
+    text-align: center;
+    font-size: xx-large;
+}

@@ -24,11 +24,15 @@ export default function Artist({ user }) {
     return (
         albums ?
             <section className="artist-page">
+                <h1 className="artist-title">{location.pathname.substring(9).split("%20").join(" ")}</h1>
                 <div className="albums">
                     {albumEls}
                 </div>
             </section>
 
-            : "LOADING"
+            :
+            <>
+                <h4 className="loading">HACKIN' A DART BE RIGHT BACK</h4></>
+
     )
 }

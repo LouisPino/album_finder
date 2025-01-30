@@ -16,7 +16,6 @@
 
 .header-link:hover {
     background-color: black;
-
 }
 
 .header-link:visited {
@@ -27,4 +26,20 @@
 .link-text {
     display: inline;
     font-size: 24px;
+}
+
+.header-r {
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    margin-right: 4px;
+}
+
+.header-r>div>div>div>div {
+    background-color: black;
+    color: white;
+}
+
+.header-r>div>div>div>div>div>div {
+    display: none;
 }

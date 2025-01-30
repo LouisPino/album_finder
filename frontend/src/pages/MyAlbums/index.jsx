@@ -50,24 +50,26 @@ export default function MyAlbums({ user }) {
     return (
         albums && (
             <section className="my-albums-page">
-                <h2>{profile?.name}'s albums</h2>
+                <h2 className="my-albums-title">{profile?.name}'s albums</h2>
                 <div className="albums">
                     {albums.length > 0 ? (
                         albums.map((album) => (
                             <div key={album._id} className="my-card">
                                 <AlbumCard album={album} user={user} />
-                                <Link to={`/albums/edit/${album._id}`}>
-                                    {user?.email === profile?.email && <button className="edit-btn">EDIT</button>}
-                                </Link>
-                                {user?.email === profile?.email && (
-                                    <button onClick={handleRemove} name={album._id} className="remove-btn">
-                                        REMOVE
-                                    </button>
-                                )}
+                                <div className="my-card-buttons">
+                                    <Link to={`/albums/edit/${album._id}`}>
+                                        {user?.email === profile?.email && <button className="edit-btn">EDIT</button>}
+                                    </Link>
+                                    {user?.email === profile?.email && (
+                                        <button onClick={handleRemove} name={album._id} className="remove-btn">
+                                            REMOVE
+                                        </button>
+                                    )}
+                                </div>
                             </div>
                         ))
                     ) : (
-                        <p>No albums found.</p>
+                        <p className="my-albums-title">No albums found.</p>
                     )}
                 </div>
                 <h2>{profile?.name}'s liked albums</h2>
@@ -87,7 +89,7 @@ export default function MyAlbums({ user }) {
                             </div>
                         ))
                     ) : (
-                        <p>No albums found.</p>
+                        <p className="my-albums-title">No albums found.</p>
                     )}
                 </div>
             </section>

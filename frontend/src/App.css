@@ -15,3 +15,7 @@ button:hover {
     color: white;
     background-color: black;
 }
+
+.loading {
+    text-align: center;
+}
