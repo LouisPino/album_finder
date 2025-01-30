@@ -18,9 +18,9 @@ export default function Header({ user, setUser }) {
             </div>
             {user ?
                 <div className="header-r">
-                    <Link className="header-link" to="/albums/add">Add Album</Link>
-                    <Link className="header-link" to={`/users/${user._id}`}>My Albums</Link>
-                    <Link className="header-link" onClick={() => { setUser(null) }}>Log Out</Link>
+                    <Link className="header-link" to="/albums/add"><p className="link-text">Add Album</p></Link>
+                    <Link className="header-link" to={`/users/${user._id}`}><p className="link-text">My Albums</p></Link>
+                    <Link className="header-link" onClick={() => { setUser(null) }}><p className="link-text">Log Out</p></Link>
                 </div>
                 :
                 <div className="header-r">
