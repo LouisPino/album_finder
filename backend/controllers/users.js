@@ -12,6 +12,7 @@ module.exports = {
 };
 async function signIn(req, res) {
     const { credential, client_id } = req.body;
+    console.log("body", req.body)
     console.log("credential", credential)
     console.log("ID", client_id)
     try {
@@ -34,18 +35,13 @@ async function signIn(req, res) {
             });
 
         }
-
-        // Send the token as a cookie and response
-        res
-            .status(200)
-            .json({ message: 'Authentication successful', user });
+        res.status(200).json({ message: 'Authentication successful', user });
 
     } catch (err) {
         console.error('Error during Google Authentication:', err);
         res.status(400).json({ error: 'Authentication failed', details: err });
     }
 }
-
 
 async function getUserById(req, res) {
     try {
@@ -54,6 +50,7 @@ async function getUserById(req, res) {
         res.status(400).json({ error: error.message });
     }
 }
+
 async function updateUser(req, res) {
     try {
         res.status(200).json(await User.findByIdAndUpdate(req.params.id, req.body));
