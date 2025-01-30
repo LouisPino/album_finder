@@ -7,12 +7,12 @@ export default function Home() {
 
     return (
         <div className="welcome-page">
-            <p className="home-top-text">Click around, find some music</p>
+            <p className="home-top-text">Experimental musicians in Toronto are releasing amazing music. Click around and find something you like.</p>
             <p className="home-top-text"><strong>Sign in</strong> to keep track of your favorite albums and to <strong>upload your music.</strong></p>
             <div className="home-info">
                 <div className="home-info-l">
                     <div className="home-info-l-top" >
-                        <h2>For up to date <strong>live event listings</strong> and <strong>archival recordings</strong>, check out <a href="https://mechanicalforestsound.blogspot.com/" id="mech-forest" target="_blank">MECHANICAL FOREST SOUND
+                        <h2>For up to date <strong>live event listings</strong> and <strong>decades of archival audio and video recordings</strong>, check out <a href="https://mechanicalforestsound.blogspot.com/" id="mech-forest" target="_blank">MECHANICAL FOREST SOUND
                         </a></h2>
 
                     </div>
