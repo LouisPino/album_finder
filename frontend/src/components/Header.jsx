@@ -10,7 +10,6 @@ import("../styles/header.css")
 export default function Header({ user, setUser }) {
     const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID
 
-
     return (
         <div className="header ">
             <div className="header-l">

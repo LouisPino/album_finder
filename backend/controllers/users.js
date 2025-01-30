@@ -56,33 +56,7 @@ module.exports = {
 async function signIn(req, res) {
     const { tokens } = await client.getToken(req.body.code); // exchange code for tokens
     console.log(tokens);
-
-    // try {
-    //     // Verify the ID token with Google's API
-    //     const ticket = await client.verifyIdToken({
-    //         idToken: credential,
-    //         audience: client_id,
-    //     });
-    //     const payload = ticket.getPayload();
-    //     console.log("payload", payload)
-    //     console.log("email", email)
-    //     const { email, given_name, family_name } = payload;
-    //     let user = await User.findOne({ email: email });
-    //     if (!user) {
-    //         // Create a new user if they don't exist
-    //         user = await User.create({
-    //             email,
-    //             name: `${given_name} ${family_name}`,
-    //             authSource: 'google',
-    //         });
-
-    //     }
-
-    res
-        .status(200)
-        .json(tokens);
-
-
+    res.json(tokens);
 }
 
 
