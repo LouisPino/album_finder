@@ -47,14 +47,11 @@ module.exports = {
 async function signIn(req, res) {
     const { code, client_id } = req.body;
     try {
-        console.log("code", code)
-        console.log("client_id", client_id)
-        console.log("client_secret", CLIENT_SECRET)
         const { tokens } = await client.getToken({
             code,
             redirect_uri: `${BASE_URL}/oauth`,
             client_id: client_id,
-            client_secret: CLIENT_SECRET,
+            _clientSecret: CLIENT_SECRET,
             grant_type: "authorization_code"
 
         });
