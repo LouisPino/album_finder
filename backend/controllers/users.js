@@ -3,9 +3,11 @@ const { OAuth2Client } = require("google-auth-library");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.JWT_SECRET;
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
-const client = new OAuth2Client(GOOGLE_CLIENT_ID);
 const BASE_URL = process.env.BASE_URL
 const CLIENT_SECRET = process.env.CLIENT_SECRET
+const client = new OAuth2Client({
+    clientId: GOOGLE_CLIENT_ID, clientSecret: CLIENT_SECRET, redirectUri: `${BASE_URL}/oauth`
+});
 
 module.exports = {
     signIn,
@@ -31,7 +33,7 @@ module.exports = {
 //             // Create a new user if they don't exist
 //             user = await User.create({
 //                 email,
-//                 name: `${given_name} ${family_name}`,
+//                 name: `${ given_name } ${ family_name }`,
 //                 authSource: 'google',
 //             });
 
@@ -49,9 +51,8 @@ async function signIn(req, res) {
     try {
         const { tokens } = await client.getToken({
             code,
-            redirect_uri: `${BASE_URL}/oauth`,
+            redirect_uri: `${BASE_URL} / oauth`,
             client_id: client_id,
-            _clientSecret: CLIENT_SECRET,
             grant_type: "authorization_code"
 
         });
