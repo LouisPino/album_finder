@@ -6,7 +6,7 @@ import { useGoogleLogin } from '@react-oauth/google';
 
 export default function GoogleAuth({ user, setUser, clientId }) {
     const login = useGoogleLogin({
-        flow: "auth-code", // Ensures the response includes an ID token
+        flow: "implicit", // Ensures the response includes an ID token
         onSuccess: async (credentialResponse) => {
             console.log(credentialResponse)
             const res = await create(credentialResponse);
