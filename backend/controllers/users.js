@@ -11,6 +11,7 @@ module.exports = {
     updateUser
 };
 async function signIn(req, res) {
+    console.log(req.body)
     const { credential, client_id } = req.body;
     try {
         // Verify the ID token with Google's API
