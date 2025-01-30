@@ -11,8 +11,9 @@ module.exports = {
     updateUser
 };
 async function signIn(req, res) {
-    console.log(req.body)
     const { credential, client_id } = req.body;
+    console.log("credential", credential)
+    console.log("ID", client_id)
     try {
         // Verify the ID token with Google's API
         const ticket = await client.verifyIdToken({
@@ -20,7 +21,8 @@ async function signIn(req, res) {
             audience: client_id,
         });
         const payload = ticket.getPayload();
-
+        console.log("payload", payload)
+        console.log("email", email)
         const { email, given_name, family_name } = payload;
         let user = await User.findOne({ email: email });
         if (!user) {

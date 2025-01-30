@@ -8,7 +8,8 @@ export default function GoogleAuth({ user, setUser, useGoogleLogin }) {
             const user = res.user;
             setUser(user);
         },
-        onError: (error) => console.log('Login Failed:', error)
+        onError: (error) => console.log('Login Failed:', error),
+        flow: "implicit", // Ensures the response includes an ID token
     });
 
     return (
