@@ -2,16 +2,16 @@
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
 export async function index() {
-    console.log("hit")
     const res = await fetch(`${BASE_URL}/albums`, {
         method: "GET",
         credentials: "include",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": true,
+
         },
     });
-    console.log(res.json())
     if (res.ok) {
         return res.json();
     } else {
