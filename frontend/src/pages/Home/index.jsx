@@ -20,7 +20,7 @@ export default function Home() {
                         <p className="title">VENUES</p>
 
                     </div> */}
-                </div><></>
+                </div>
                 {/* <div className="home-info-r">
                     <h4>Venues to check out</h4>
                     <p>Tranzac</p>

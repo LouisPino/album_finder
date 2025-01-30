@@ -96,3 +96,17 @@ fieldset {
 .album-heart>img {
     width: 24px;
 }
+
+@media screen and (max-width: 650px) {
+    .album-card {
+        border: 1px solid black;
+        padding: 1px;
+        width: 40vw;
+        margin: 2vw;
+    }
+
+    .filter-div {
+        width: 82vw;
+        margin-top: 20px;
+    }
+}

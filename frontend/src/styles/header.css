@@ -51,54 +51,34 @@ a {
 @media screen and (max-width: 650px) {
     .header {
         height: 30px;
-        display: flex;
-        justify-content: space-between;
     }
 
     .header-link {
         padding: 4px;
-        text-decoration: none;
-        color: black;
-
-    }
-
-    a .header-link:hover .link-text {
-        color: white;
-    }
-
-    .header-link:hover {
-        background-color: black;
-    }
-
-    .header-link:visited {
-        margin: 0 12px;
-        color: black;
     }
 
     .link-text {
-        display: inline;
-        font-size: 16px;
-        color: black
+        font-size: 18px;
+        text-decoration: underline;
     }
 
     .header-r {
-        /* border: 1px solid red; */
+        margin: 0;
         display: flex;
-        align-items: center;
-        margin-right: 4px;
+        flex-wrap: wrap;
     }
 
     .header-r>div>div>div>div {
         background-color: black;
         color: white;
+        margin: 0;
+        padding: 0 4px;
+        ;
     }
 
     .header-r>div>div>div>div>div {
         background-color: black;
         color: white;
-    }
-
-    .header-r>div>div>div>div>div>div {
-        display: none;
+        font-size: small;
     }
 }
