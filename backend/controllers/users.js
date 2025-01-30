@@ -10,38 +10,56 @@ module.exports = {
     getUserById,
     updateUser
 };
-async function signIn(req, res) {
-    const { credential, client_id } = req.body;
-    console.log("body", req.body)
-    console.log("credential", credential)
-    console.log("ID", client_id)
-    try {
-        // Verify the ID token with Google's API
-        const ticket = await client.verifyIdToken({
-            idToken: credential,
-            audience: client_id,
-        });
-        const payload = ticket.getPayload();
-        console.log("payload", payload)
-        console.log("email", email)
-        const { email, given_name, family_name } = payload;
-        let user = await User.findOne({ email: email });
-        if (!user) {
-            // Create a new user if they don't exist
-            user = await User.create({
-                email,
-                name: `${given_name} ${family_name}`,
-                authSource: 'google',
-            });
+// async function signIn(req, res) {
+//     const { code, client_id } = req.body;
+//     console.log("body", req.body)
+//     console.log("credential", credential)
+//     try {
+//         // Verify the ID token with Google's API
+//         const ticket = await client.verifyIdToken({
+//             idToken: code,
+//             audience: client_id,
+//         });
+//         const payload = ticket.getPayload();
+//         console.log("payload", payload)
+//         console.log("email", email)
+//         const { email, given_name, family_name } = payload;
+//         let user = await User.findOne({ email: email });
+//         if (!user) {
+//             // Create a new user if they don't exist
+//             user = await User.create({
+//                 email,
+//                 name: `${given_name} ${family_name}`,
+//                 authSource: 'google',
+//             });
 
-        }
-        res.status(200).json({ message: 'Authentication successful', user });
+//         }
+//         res.status(200).json({ message: 'Authentication successful', user });
+
+//     } catch (err) {
+//         console.error('Error during Google Authentication:', err);
+//         res.status(400).json({ error: 'Authentication failed', details: err });
+//     }
+// }
+
+async function signIn(req, res) {
+    const { code, client_id } = req.body;
+    try {
+        const { tokens } = await client.getToken({
+            code,
+            redirect_uri: `${BASE_URL}/oauth`,  // Make sure the redirect URI matches the one in your Google OAuth configuration
+            client_id: client_id,
+        });
+
+        console.log(tokens);  // Log tokens to inspect them
+        res.json(tokens);  // Send tokens back to the frontend
 
     } catch (err) {
         console.error('Error during Google Authentication:', err);
         res.status(400).json({ error: 'Authentication failed', details: err });
     }
 }
+
 
 async function getUserById(req, res) {
     try {
