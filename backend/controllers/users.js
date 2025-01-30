@@ -48,11 +48,10 @@ module.exports = {
 
 async function signIn(req, res) {
     const { code, client_id } = req.body;
-    console.log(`${BASE_URL}/oauth`)
     try {
         const { tokens } = await client.getToken({
             code,
-            redirect_uri: `${BASE_URL}/oauth`,
+            redirect_uri: `https://sixper-09b5db983bf5.herokuapp.com/oauth`,
             client_id: client_id,
             grant_type: "authorization_code"
 
