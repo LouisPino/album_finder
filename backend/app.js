@@ -10,6 +10,7 @@ require('./config/database.js')
 const FRONTEND_URL = process.env.FRONTEND_URL
 // Create an instance of OAuth2Client
 
+var app = express();
 app.use(cors({
   origin: FRONTEND_URL, // Allow only your frontend
   methods: 'GET, POST, PUT , DELETE, OPTIONS',
@@ -23,7 +24,6 @@ var albumsRouter = require('./routes/albums');
 var artistRouter = require('./routes/artists');
 var userRouter = require('./routes/users');
 
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
