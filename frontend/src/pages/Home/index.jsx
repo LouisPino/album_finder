@@ -7,7 +7,7 @@ export default function Home() {
 
     return (
         <div className="welcome-page">
-            <p className="home-top-text">Experimental musicians in Toronto are releasing amazing music. Click around and find something you like.</p>
+            <p className="home-top-text home-top-text-top">Experimental musicians in Toronto are releasing amazing music. Click around and find something you like.</p>
             <p className="home-top-text"><strong>Sign in</strong> to keep track of your favorite albums and to <strong>upload your music.</strong></p>
             <div className="home-info">
                 <div className="home-info-l">
