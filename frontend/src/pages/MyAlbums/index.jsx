@@ -23,6 +23,7 @@ export default function MyAlbums({ user }) {
     }, [profile]);
 
     useEffect(() => {
+        console.log(profile, "profile")
     }, [albums]);
 
     useEffect(() => {
@@ -36,6 +37,7 @@ export default function MyAlbums({ user }) {
     }
 
     async function getProfile() {
+        console.log("ID", location.pathname.split("/")[location.pathname.split("/").length - 1])
         const profileResp = await getUserById(location.pathname.split("/")[location.pathname.split("/").length - 1]);
         if (profileResp.length) {
             setProfile(profileResp[0]);
