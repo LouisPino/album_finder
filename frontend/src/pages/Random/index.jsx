@@ -26,6 +26,21 @@ export default function Random({ user }) {
     }, [albums])
 
 
+
+    useEffect(() => {
+        const randomHeaderEl = document.getElementById("random-header");
+
+        if (randomHeaderEl) {
+            const handleRandom = () => getNewAlbum();
+            randomHeaderEl.addEventListener("click", handleRandom);
+            return () => {
+                randomHeaderEl.removeEventListener("click", handleRandom);
+            };
+        }
+    }, []);
+
+
+
     return (album ?
         <div className="random-main">
             <AlbumCard album={album} user={user} />

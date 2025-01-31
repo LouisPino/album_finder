@@ -16,7 +16,7 @@ export default function Header({ user, setUser }) {
                 <Link className="header-link" to="/"><p className="link-text">Home</p></Link>
                 <Link className="header-link" id="albums-header" to="/albums"><p className="link-text">Music</p></Link>
                 <Link className="header-link" to="/artists"><p className="link-text">Artists</p></Link>
-                <Link className="header-link" to="/random"><p className="link-text">Random</p></Link>
+                <Link className="header-link" id="random-header" to="/random"><p className="link-text">Random</p></Link>
             </div>
             {user ?
                 <div className="header-r">
