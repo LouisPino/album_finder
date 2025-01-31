@@ -7,9 +7,9 @@ export default function Random({ user }) {
     const [album, setAlbum] = useState(null)
     const [albums, setAlbums] = useState(null)
 
-
+    console.log("albums render", albums)
     async function getNewAlbum() {
-        console.log("getnewalbums")
+        console.log("albums", albums)
         if (!albums) {
             const albumsResp = await getAlbums()
             setAlbums(albumsResp)
@@ -19,7 +19,6 @@ export default function Random({ user }) {
     }
 
     useEffect(() => {
-        console.log("useeffect")
         if (!album) {
             getNewAlbum()
         }
