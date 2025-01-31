@@ -134,7 +134,7 @@ export default function AddAlbum({ user }) {
     return (
         uploaded ?
             <>
-                <p className="title">Thank you for adding!</p>
+                <p className="thanks">Thank you for adding!</p>
                 <button className="another" onClick={handleReset}>Upload Another?</button>
             </>
             :
