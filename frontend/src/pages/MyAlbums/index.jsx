@@ -52,7 +52,7 @@ export default function MyAlbums({ user }) {
     return (
         albums && (
             <section className="my-albums-page">
-                <h2 className="my-albums-title">{profile?.name}'s albums</h2>
+                <h2 className="my-albums-title">{profile?.name}'s uploads</h2>
                 <div className="albums">
                     {albums.length > 0 ? (
                         albums.map((album) => (
@@ -71,10 +71,10 @@ export default function MyAlbums({ user }) {
                             </div>
                         ))
                     ) : (
-                        <p className="my-albums-title">No albums found.</p>
+                        <p className="my-albums-title">No music found.</p>
                     )}
                 </div>
-                <h2 className="my-albums-title">{profile?.name}'s liked albums</h2>
+                <h2 className="my-albums-title">{profile?.name}'s liked music</h2>
                 <div className="albums">
                     {savedAlbums?.length > 0 ? (
                         savedAlbums.map((album) => (
@@ -91,7 +91,7 @@ export default function MyAlbums({ user }) {
                             </div>
                         ))
                     ) : (
-                        <p className="my-albums-title">No albums found.</p>
+                        <p className="my-albums-title">No music found.</p>
                     )}
                 </div>
             </section>
