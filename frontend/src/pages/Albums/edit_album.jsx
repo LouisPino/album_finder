@@ -125,7 +125,7 @@ export default function EditAlbum({ user }) {
             }
         }
         editAlbum(album)
-        navigate(`/users/${user.email}`)
+        navigate(`/users/${user.id}`)
     }
     if (albumInfo) {
         const fieldELs = Object.keys(blankAlbum).map((key) => {
