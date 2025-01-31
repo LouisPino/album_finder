@@ -18,9 +18,10 @@ export default function Random({ user }) {
     }
 
     useEffect(() => {
-        console.log("album", album)
-        getNewAlbum()
-    }, [])
+        if (!album) {
+            getNewAlbum()
+        }
+    }, [albums])
 
 
     return (album ?
