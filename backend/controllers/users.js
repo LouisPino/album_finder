@@ -14,37 +14,7 @@ module.exports = {
     getUserById,
     updateUser
 };
-// async function signIn(req, res) {
-//     const { code, client_id } = req.body;
-//     console.log("body", req.body)
-//     console.log("credential", credential)
-//     try {
-//         // Verify the ID token with Google's API
-//         const ticket = await client.verifyIdToken({
-//             idToken: code,
-//             audience: client_id,
-//         });
-//         const payload = ticket.getPayload();
-//         console.log("payload", payload)
-//         console.log("email", email)
-//         const { email, given_name, family_name } = payload;
-//         let user = await User.findOne({ email: email });
-//         if (!user) {
-//             // Create a new user if they don't exist
-//             user = await User.create({
-//                 email,
-//                 name: `${ given_name } ${ family_name }`,
-//                 authSource: 'google',
-//             });
 
-//         }
-//         res.status(200).json({ message: 'Authentication successful', user });
-
-//     } catch (err) {
-//         console.error('Error during Google Authentication:', err);
-//         res.status(400).json({ error: 'Authentication failed', details: err });
-//     }
-// }
 async function signIn(req, res) {
     const { code, client_id } = req.body;
     try {
