@@ -68,6 +68,9 @@ export default function AddAlbum({ user }) {
 
     function handleAddArtist(e) {
         e.preventDefault()
+        if (!user) {
+            alert("Must be signed in to add an artist")
+        }
         const addArtistEl = document.querySelector(".add-artist-btn")
         const newEl = document.createElement("input")
         newEl.classList.add("artist-input")
@@ -84,10 +87,10 @@ export default function AddAlbum({ user }) {
                 alert(`Must fill all fields`)
                 return
             } else if (albumInfo.categories.length === 0) {
-                alert(` Must choose at least one category`)
+                alert(`Must choose at least one category`)
                 return
             } else if (isNaN(albumInfo.release_year)) {
-                alert(` Release year must be an integer`)
+                alert(`Release year must be an integer`)
                 return
             }
         }
@@ -123,7 +126,7 @@ export default function AddAlbum({ user }) {
                     {key != "image" && key != "link" && <label>{toTitleCase(key.split("_").join(" "))}</label>}
                     {key === "image" && <label>Image Link (right click and copy image address)</label>}
                     {key === "link" && <label>Link to music</label>}
-                    <input className="filter" name={key} onChange={handleInput}></input>
+                    <input className="filter" name={key} type={key === "description" ? "textarea" : "text"} onChange={handleInput}></input>
                 </>
             )
         }
