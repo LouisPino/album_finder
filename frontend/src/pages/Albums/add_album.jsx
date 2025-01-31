@@ -46,7 +46,7 @@ export default function AddAlbum({ user }) {
         try {
             tempObj.uploader = user.name
         } catch (err) {
-            alert("Must be signed in!")
+            alert("Must be signed in!giu")
         }
         tempObj.email = user.email
         if (e.target.name != "categories" && e.target.name != "artist") {
