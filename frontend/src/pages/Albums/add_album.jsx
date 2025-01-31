@@ -133,10 +133,10 @@ export default function AddAlbum({ user }) {
     )
     return (
         uploaded ?
-            <>
+            <div className='after-add'>
                 <p className="thanks">Thank you for adding!</p>
                 <button className="another" onClick={handleReset}>Upload Another?</button>
-            </>
+            </div>
             :
             <section className="add-album">
                 <form className="add-filters">
