@@ -40,7 +40,7 @@ export default function MyAlbums({ user }) {
         console.log("ID", location.pathname.split("/")[location.pathname.split("/").length - 1])
         const profileResp = await getUserById(location.pathname.split("/")[location.pathname.split("/").length - 1]);
         if (profileResp.length) {
-            setProfile(profileResp[0]);
+            setProfile(profileResp);
         }
     }
 
