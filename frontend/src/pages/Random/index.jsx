@@ -9,6 +9,7 @@ export default function Random({ user }) {
 
 
     async function getNewAlbum() {
+        console.log("getnewalbums")
         if (!albums) {
             const albumsResp = await getAlbums()
             setAlbums(albumsResp)
@@ -18,6 +19,7 @@ export default function Random({ user }) {
     }
 
     useEffect(() => {
+        console.log("useeffect")
         if (!album) {
             getNewAlbum()
         }
@@ -30,7 +32,9 @@ export default function Random({ user }) {
             <p className="random-desc">{album.description}</p>
             <button className="random-btn" onClick={getNewAlbum}>Pick Again</button>
         </div>
-        :
-        <h4 className="loading">HACKIN' A DART BE RIGHT BACK</h4>
+        : <>
+            <button className="random-btn" onClick={getNewAlbum}>Pick A RAndom Album</button>
+            <h4 className="loading">HACKIN' A DART BE RIGHT BACK</h4>
+        </>
     )
 }
