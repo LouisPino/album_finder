@@ -74,7 +74,7 @@ export default function MyAlbums({ user }) {
                         <p className="my-albums-title">No albums found.</p>
                     )}
                 </div>
-                <h2>{profile?.name}'s liked albums</h2>
+                <h2 className="my-albums-title">{profile?.name}'s liked albums</h2>
                 <div className="albums">
                     {savedAlbums?.length > 0 ? (
                         savedAlbums.map((album) => (
