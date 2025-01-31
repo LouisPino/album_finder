@@ -32,9 +32,7 @@ export default function Random({ user }) {
             <p className="random-desc">{album.description}</p>
             <button className="random-btn" onClick={getNewAlbum}>Pick Again</button>
         </div>
-        : <>
-            <button className="random-btn" onClick={getNewAlbum}>Pick A RAndom Album</button>
-            <h4 className="loading">HACKIN' A DART BE RIGHT BACK</h4>
-        </>
+        :
+        <h4 className="loading">HACKIN' A DART BE RIGHT BACK</h4>
     )
 }
