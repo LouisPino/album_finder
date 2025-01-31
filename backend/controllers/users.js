@@ -63,7 +63,7 @@ async function signIn(req, res) {
 
 async function getUserById(req, res) {
     try {
-        res.status(200).json(await User.findById(req.params.id);
+        res.status(200).json(await User.findById(req.params.id));
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
