@@ -71,6 +71,7 @@ export default function AddAlbum({ user }) {
     }
 
     function handleAddArtist(e) {
+        e.preventDefault()
         const addArtistEl = document.querySelector(".add-artist-btn")
         const newEl = document.createElement("input")
         newEl.classList.add("artist-input")

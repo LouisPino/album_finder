@@ -5,13 +5,19 @@ import("./random.css")
 
 export default function Random({ user }) {
     const [album, setAlbum] = useState(null)
+    const [albums, setAlbums] = useState(null)
+
 
     async function getNewAlbum() {
-        const albums = await getAlbums()
+        if (!albums) {
+            const albumsResp = await getAlbums()
+            setAlbums(albumsResp)
+        }
         setAlbum(albums[Math.floor(Math.random() * albums.length)])
     }
 
     useEffect(() => {
+        console.log("album", album)
         getNewAlbum()
     }, [])
 
