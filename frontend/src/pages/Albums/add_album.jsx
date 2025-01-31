@@ -67,10 +67,6 @@ export default function AddAlbum({ user }) {
     }
 
     function handleAddArtist(e) {
-        e.preventDefault()
-        if (!user) {
-            alert("Must be signed in to add an artist")
-        }
         const addArtistEl = document.querySelector(".add-artist-btn")
         const newEl = document.createElement("input")
         newEl.classList.add("artist-input")
@@ -84,7 +80,7 @@ export default function AddAlbum({ user }) {
     async function handleClick() {
         for (let key of Object.keys(albumInfo)) {
             if (!albumInfo[key] && key != "uploader" && key != "email") {
-                alert(`Must fill all fields`)
+                alert(`Must fill all fields: ${key}`)
                 return
             } else if (albumInfo.categories.length === 0) {
                 alert(`Must choose at least one category`)
