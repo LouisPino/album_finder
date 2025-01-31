@@ -50,7 +50,7 @@ export default function MyAlbums({ user }) {
     }
 
     return (
-        albums && (
+        albums ? (
             <section className="my-albums-page">
                 <h2 className="my-albums-title">{profile?.name}'s uploads</h2>
                 <div className="albums">
@@ -87,6 +87,8 @@ export default function MyAlbums({ user }) {
                     )}
                 </div>
             </section>
-        )
+        ) :
+            <h4 className="loading">HACKIN' A DART BE RIGHT BACK</h4>
+
     );
 }
