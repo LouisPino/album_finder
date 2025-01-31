@@ -12,6 +12,7 @@ export default function Random({ user }) {
         if (!albums) {
             const albumsResp = await getAlbums()
             setAlbums(albumsResp)
+            console.log(albumsResp)
         }
         setAlbum(albums[Math.floor(Math.random() * albums.length)])
     }
