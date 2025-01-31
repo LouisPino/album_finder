@@ -80,14 +80,6 @@ export default function MyAlbums({ user }) {
                         savedAlbums.map((album) => (
                             <div key={album._id} className="my-card">
                                 <AlbumCard album={album} user={user} />
-                                <Link to={`/albums/edit/${album._id}`}>
-                                    {user?.email === profile?.email && <button className="edit-btn">EDIT</button>}
-                                </Link>
-                                {user?.email === profile?.email && (
-                                    <button onClick={handleRemove} name={album._id} className="remove-btn">
-                                        REMOVE
-                                    </button>
-                                )}
                             </div>
                         ))
                     ) : (
