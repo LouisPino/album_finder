@@ -32,7 +32,7 @@ export default function Albums({ user }) {
   const categoryEls = filters ? categories.map((cat) => (
     <div className="filter-category">
       <input onClick={handleTick} value={cat} type="checkbox" checked={filters[cat]}></input>
-      <label>{cat}</label>
+      <label>{toTitleCase(cat)}</label>
     </div>
   )) : ""
 
@@ -58,6 +58,17 @@ export default function Albums({ user }) {
       shuffleArray(albumsResp)
       setAlbums(albumsResp)
     }
+  }
+
+  function toTitleCase(str) {
+    return str
+      .toLowerCase() // Convert the whole string to lowercase first
+      .split(' ') // Split the string into an array of words
+      .map(word => {
+        // Capitalize the first letter and keep the rest lowercase
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      })
+      .join(' '); // Join the words back into a single string
   }
 
   function handleTick(e) {
