@@ -97,6 +97,10 @@ fieldset {
     width: 24px;
 }
 
+.another {
+    width: 50vw;
+}
+
 @media screen and (max-width: 650px) {
     .album-card {
         border: 1px solid black;

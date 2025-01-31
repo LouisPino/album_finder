@@ -134,8 +134,8 @@ export default function AddAlbum({ user }) {
     return (
         uploaded ?
             <>
-                <p>Thank you for adding!</p>
-                <button onClick={handleReset}>Upload Another?</button>
+                <p className="title">Thank you for adding!</p>
+                <button className="another" onClick={handleReset}>Upload Another?</button>
             </>
             :
             <section className="add-album">

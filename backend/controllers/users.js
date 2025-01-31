@@ -32,26 +32,20 @@ async function signIn(req, res) {
 
         const payload = ticket.getPayload();  // Contains user details
         console.log("payload", payload);
-
         const { email, given_name, family_name } = payload;
-
-        // Step 3: Check if the user already exists in the database
         let user = await User.findOne({ email: email });
 
         if (!user) {
-            // Step 4: Create a new user if they don't exist
             user = await User.create({
                 email,
                 name: `${given_name} ${family_name}`,
-                authSource: 'google',  // You can store the auth source (Google) for reference
+                authSource: 'google',
             });
         }
-
-        // Step 5: Respond to the client with user information
         res.status(200).json({
             message: 'Authentication successful',
             user,
-            tokens,  // Optionally, send back the tokens if needed (access token, refresh token, etc.)
+            tokens,
         });
 
     } catch (error) {
