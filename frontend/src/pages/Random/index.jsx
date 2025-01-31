@@ -1,28 +1,38 @@
 import { getAlbums } from "../../utilities/album-service";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AlbumCard from "../../components/AlbumCard";
 import("./random.css")
 
 export default function Random({ user }) {
     const [album, setAlbum] = useState(null)
-    const [albums, setAlbums] = useState(null)
+    // const [albums, setAlbums] = useState(null)
 
-    console.log("albums render", albums)
+    const albumsRef = useRef(null);
+
     async function getNewAlbum() {
-        console.log("albums", albums)
-        if (!albums) {
-            const albumsResp = await getAlbums()
-            setAlbums(albumsResp)
-            console.log(albumsResp)
+        if (!albumsRef.current) {
+            const albumsResp = await getAlbums();
+            albumsRef.current = albumsResp;
         }
-        setAlbum(albums[Math.floor(Math.random() * albums.length)])
+        setAlbum(albumsRef.current[Math.floor(Math.random() * albumsRef.current.length)]);
     }
 
-    useEffect(() => {
-        if (!album) {
-            getNewAlbum()
-        }
-    }, [albums])
+
+    // async function getNewAlbum() {
+    //     console.log("albums", albums)
+    //     if (!albums) {
+    //         const albumsResp = await getAlbums()
+    //         setAlbums(albumsResp)
+    //         console.log(albumsResp)
+    //     }
+    //     setAlbum(albums[Math.floor(Math.random() * albums.length)])
+    // }
+
+    // useEffect(() => {
+    //     if (!album) {
+    //         getNewAlbum()
+    //     }
+    // }, [albums])
 
 
 
