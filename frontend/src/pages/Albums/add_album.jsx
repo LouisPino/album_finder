@@ -43,7 +43,11 @@ export default function AddAlbum({ user }) {
 
     function handleInput(e) {
         let tempObj = albumInfo
-        tempObj.uploader = user.name
+        try {
+            tempObj.uploader = user.name
+        } catch (err) {
+            alert("Must be signed in!")
+        }
         tempObj.email = user.email
         if (e.target.name != "categories" && e.target.name != "artist") {
             tempObj[e.target.name] = e.target.value
