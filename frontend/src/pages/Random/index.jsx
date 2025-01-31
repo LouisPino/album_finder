@@ -19,6 +19,7 @@ export default function Random({ user }) {
     return (album ?
         <div className="random-main">
             <AlbumCard album={album} user={user} />
+            <p className="random-desc">{album.description}</p>
             <button className="random-btn" onClick={getNewAlbum}>Pick Again</button>
         </div>
         :
