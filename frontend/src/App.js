@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import MyAlbums from "./pages/MyAlbums";
+import _404 from "./pages/404";
 import Random from "./pages/Random";
 import { useEffect, useState } from "react";
 import("./styles/footer.css");
@@ -26,9 +27,11 @@ function App() {
           <Route exact path="/albums/add" element={<AddAlbum user={user} />} />
           <Route exact path="/albums/edit/:id" element={<EditAlbum user={user} />} />
           <Route exact path="/artists" element={<Artists user={user} />} />
-          <Route exact path="/users/:email" element={<MyAlbums user={user} />} />
+          <Route exact path="/users/:id" element={<MyAlbums user={user} />} />
           <Route exact path="/random" element={<Random user={user} />} />
           <Route exact path="/artists/:artist" element={<Artist user={user} />} />
+          <Route path="/*" element={<_404 />} />
+
         </Routes>
         <Footer />
       </BrowserRouter>

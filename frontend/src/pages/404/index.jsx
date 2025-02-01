@@ -1,12 +1,11 @@
-import { useAuth0 } from '@auth0/auth0-react';
-import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
+import { useEffect } from "react"
+import { useLocation, useNavigate } from "react-router-dom"
 
-export default function Dashboard() {
-  const { user, isLoading } = useAuth0();
-  return(
+export default function _404() {
+
+  return (
     <>
-      <h2>Not so kind after all</h2>
-      </>
-    )
+      <h2 className="home-top-text">oops, ain't nothin here</h2>
+    </>
+  )
 }
