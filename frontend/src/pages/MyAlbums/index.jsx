@@ -3,12 +3,14 @@ import { getUserById } from "../../utilities/user-service";
 import { useEffect, useState } from "react";
 import AlbumCard from "../../components/AlbumCard";
 import { Link, useLocation } from "react-router-dom";
+import YouSure from "../../components/YouSure";
 import("./myalbums.css");
 
 export default function MyAlbums({ user }) {
     const [albums, setAlbums] = useState(null);
     const [savedAlbums, setSavedAlbums] = useState(null);
     const [profile, setProfile] = useState(null);
+    const [youSureId, setYouSureId] = useState(null);
 
     const location = useLocation();
 
@@ -49,6 +51,10 @@ export default function MyAlbums({ user }) {
         handleLoad();
     }
 
+    function getConfirmation(e) {
+        setYouSureId(e.target.name)
+    }
+
     return (
         albums ? (
             <section className="my-albums-page">
@@ -56,19 +62,22 @@ export default function MyAlbums({ user }) {
                 <div className="albums">
                     {albums.length > 0 ? (
                         albums.map((album) => (
-                            <div key={album._id} className="my-card">
-                                <AlbumCard album={album} user={user} />
-                                <div className="my-card-buttons">
-                                    <Link to={`/albums/edit/${album._id}`}>
-                                        {user?.email === profile?.email && <button className="edit-btn">EDIT</button>}
-                                    </Link>
-                                    {user?.email === profile?.email && (
-                                        <button onClick={handleRemove} name={album._id} className="remove-btn">
-                                            REMOVE
-                                        </button>
-                                    )}
+                            <>
+                                <div key={album._id} className="my-card">
+                                    <AlbumCard album={album} user={user} />
+                                    <div className="my-card-buttons">
+                                        <Link to={`/albums/edit/${album._id}`}>
+                                            {user?.email === profile?.email && <button className="edit-btn">EDIT</button>}
+                                        </Link>
+                                        {user?.email === profile?.email && (
+                                            <button onClick={getConfirmation} name={album._id} className="remove-btn">
+                                                REMOVE
+                                            </button>
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
+                                {youSureId == album._id && <YouSure user={user} album={album} handleRemove={handleRemove} setYouSureId={setYouSureId} youSureId={youSureId} />}
+                            </>
                         ))
                     ) : (
                         <p className="my-albums-title">No music found.</p>
