@@ -4,7 +4,7 @@ import { create } from "../utilities/user-api"
 import { useGoogleLogin } from '@react-oauth/google';
 
 
-export default function GoogleAuth({ user, setUser, clientId }) {
+export default function GoogleAuth({ user, setUser, clientId, alertUser }) {
 
     const login = useGoogleLogin({
         flow: "auth-code", // Ensures the response includes an ID token
@@ -19,6 +19,6 @@ export default function GoogleAuth({ user, setUser, clientId }) {
     });
 
     return (
-        <button className="login-btn" onClick={() => login()}>Sign In</button>
+        <button className="login-btn" onClick={() => { alertUser(); login() }}>Sign In</button>
     );
 };
