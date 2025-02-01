@@ -6,7 +6,6 @@ export default function Heart({ user, album }) {
     const redHeart = "https://media.istockphoto.com/id/1903985199/vector/heart-flat-icon.jpg?s=612x612&w=0&k=20&c=FOAQ1kofne38dLzm6C6vBE39nY9fynVBpQb7UcDW7gk="
 
     const [liked, setLiked] = useState(false)
-    console.log(user.favorites, liked)
     useEffect(() => {
         if (user.favorites.includes(album._id)) {
             setLiked(true);

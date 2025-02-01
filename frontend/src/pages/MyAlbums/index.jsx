@@ -25,7 +25,6 @@ export default function MyAlbums({ user }) {
     }, [profile]);
 
     useEffect(() => {
-        console.log(profile, "profile")
     }, [albums]);
 
     useEffect(() => {

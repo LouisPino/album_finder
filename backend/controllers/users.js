@@ -22,8 +22,6 @@ async function signIn(req, res) {
         const { tokens } = await client.getToken({
             code: code
         });
-        console.log("tokens", tokens);  // Log tokens to inspect them
-
         // Step 2: Verify the ID token to get user information
         const ticket = await client.verifyIdToken({
             idToken: tokens.id_token,  // Use the ID token received in the OAuth flow
@@ -31,7 +29,6 @@ async function signIn(req, res) {
         });
 
         const payload = ticket.getPayload();  // Contains user details
-        console.log("payload", payload);
         const { email, given_name, family_name } = payload;
         let user = await User.findOne({ email: email });
 
