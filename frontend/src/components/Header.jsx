@@ -16,7 +16,7 @@ export default function Header({ user, setUser }) {
 
     function alertUser() {
         if (isInAppBrowser()) {
-            alert("In order to sign in, you'll use your default web browser (not Instagram). Sorry!");
+            alert("Instagram's web browser doesn't allow sign in. Please open in a web browser. Sorry!");
         }
     }
 
