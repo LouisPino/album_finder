@@ -10,11 +10,11 @@ export default function EditAlbum({ user }) {
     const [id, setId] = useState()
     const blankAlbum = {
         title: "",
-        description: "",
+        artist: [],
         link: "",
         image: "",
+        description: "",
         release_year: 0,
-        artist: [],
         categories: []
     }
     useEffect(() => {
@@ -148,10 +148,15 @@ export default function EditAlbum({ user }) {
                     </div>
                 </>
                 )
+            } else if (key === "description") {
+                return (<><label>Description</label>
+                    <textarea className="filter" name={key} onChange={handleInput} value={albumInfo.description}></textarea>
+                </>
+                )
             } else {
                 return (
                     <>
-                        {key != "image" && key != "link" && <label>{toTitleCase(key.split("_").join(" "))}</label>}
+                        {key != "image" && key != "link" && key != "description" && < label > {toTitleCase(key.split("_").join(" "))}</label >}
                         {key === "image" && <label>Image Link (right click and copy image address)</label>}
                         {key === "link" && <label>Link to music</label>}
                         <input className="filter" name={key} onChange={handleInput} value={albumInfo[key]}></input>

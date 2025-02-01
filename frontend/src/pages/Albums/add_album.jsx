@@ -104,9 +104,9 @@ export default function AddAlbum({ user }) {
         if (key === "categories") {
             return (
                 <>
-                    <label>{toTitleCase(key)}</label>
+                    <label>{key}</label>
                     <fieldset>
-                        <div className="add-album-filter" >
+                        <div className="filter" >
                             {categoryOptions}
                         </div>
                     </fieldset>
@@ -116,23 +116,26 @@ export default function AddAlbum({ user }) {
             return (<>
                 <label>Artists</label>
                 <div className="artists-field filter" >
-                    <input onChange={handleInput} name="artist" className="artist-input"></input>
+                    <input className="filter artist-input" name={key} onChange={handleInput}></input>
                     <button className="add-artist-btn" onClick={handleAddArtist}> + </button>
                 </div>
+            </>
+            )
+        } else if (key === "description") {
+            return (<><label>Description</label>
+                <textarea className="filter" name={key} onChange={handleInput}></textarea>
             </>
             )
         } else {
             return (
                 <>
-                    {key != "image" && key != "link" && <label>{toTitleCase(key.split("_").join(" "))}</label>}
+                    {key != "image" && key != "link" && key != "description" && < label > {toTitleCase(key.split("_").join(" "))}</label >}
                     {key === "image" && <label>Image Link (right click and copy image address)</label>}
                     {key === "link" && <label>Link to music</label>}
-                    <input className="filter" name={key} type={key === "description" ? "textarea" : "text"} onChange={handleInput}></input>
+                    <input className="filter" name={key} onChange={handleInput}></input>
                 </>
             )
         }
-
-
     }
     )
     return (
