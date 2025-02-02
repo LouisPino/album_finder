@@ -9,12 +9,11 @@ export default function Comment({ comment, user, handleRequest }) {
         setConfirmDeleteOpen(true)
     }
 
-    function handleRemove() {
+    async function handleRemove() {
         //delete comment
         setConfirmDeleteOpen(false)
+        await deleteComment(comment._id)
         handleRequest()
-        deleteComment(comment._id)
-        console.log(comment._id)
     }
 
 
@@ -25,7 +24,7 @@ export default function Comment({ comment, user, handleRequest }) {
                 <p className="comment-timestamp">{date.toLocaleString([], { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
             </div>
             <div className="comment-content">{comment.content}
-                <button onClick={confirmDelete} className="comment-x">X</button>
+                {user?._id === comment.user_id && <button onClick={confirmDelete} className="comment-x">X</button>}
             </div>
             {confirmDeleteOpen && <YouSureComment user={user} comment={comment} handleRemove={handleRemove} setConfirmDeleteOpen={setConfirmDeleteOpen}></YouSureComment>}
         </div >
