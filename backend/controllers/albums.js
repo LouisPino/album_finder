@@ -20,7 +20,7 @@ async function create(req, res) {
 
 async function index(req, res) {
     try {
-        res.status(200).json(await Album.find());
+        res.status(200).json(await Album.find().populate('commentCount'));
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

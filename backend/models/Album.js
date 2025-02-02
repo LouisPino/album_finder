@@ -10,7 +10,7 @@ const albumSchema = new Schema({
     link: String,
     image: String,
     release_year: Number,
-    categories: [String]
+    categories: [String],
 }, {
     timestamps: true,
     toJSON: { virtuals: true },
