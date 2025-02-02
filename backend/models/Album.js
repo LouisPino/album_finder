@@ -15,5 +15,14 @@ const albumSchema = new Schema({
     timestamps: true
 });
 
+albumSchema.virtual('commentCount', {
+    ref: 'Comment', // The model to count
+    localField: '_id', // Field from the albums collection
+    foreignField: 'albumId', // Field from the comments collection
+    count: true // Enable counting
+});
+
+albumSchema.set('toJSON', { virtuals: true });
+
 
 module.exports = mongoose.model('Album', albumSchema); 
