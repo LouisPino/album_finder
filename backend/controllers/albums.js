@@ -20,7 +20,21 @@ async function create(req, res) {
 
 async function index(req, res) {
     try {
-        res.status(200).json(await Album.find());
+        res.status(200).json(await Album.aggregate([
+            {
+                $lookup: {
+                    from: 'comments', // The collection to join
+                    localField: '_id', // Field from the albums collection
+                    foreignField: 'album_id', // Field from the comments collection
+                    as: 'albumComments' // Output array field
+                }
+            },
+            {
+                $addFields: {
+                    commentCount: { $size: '$albumComments' } // Calculate the number of comments
+                }
+            },
+        ]));
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
