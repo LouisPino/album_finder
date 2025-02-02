@@ -25,7 +25,7 @@ async function getCommentsByAlbumId(req, res) {
 
 async function deleteComment(req, res) {
     try {
-        res.status(200).json(await Comment.findByIdAndDelete(req.body.id));
+        res.status(200).json(await Comment.findByIdAndDelete(req.params.id));
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

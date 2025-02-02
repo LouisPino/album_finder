@@ -18,6 +18,22 @@ export async function addComment(data) {
     }
 }
 
+export async function deleteComment(id) {
+    const res = await fetch(`${BASE_URL}/comments/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+    });
+    if (res.ok) {
+        return res.json();
+    } else {
+        return new Error("Invalid Request");
+    }
+}
+
 export async function getCommentsByAlbumId(id) {
     const res = await fetch(`${BASE_URL}/comments/${id}`, {
         method: "GET",

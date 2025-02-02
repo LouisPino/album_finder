@@ -17,3 +17,12 @@ export async function addComment(comment) {
         return err
     }
 }
+
+export async function deleteComment(id) {
+    try {
+        const data = await commentAPI.deleteComment(id)
+        return data
+    } catch (err) {
+        return err
+    }
+}

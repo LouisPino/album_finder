@@ -36,7 +36,7 @@ export default function Comments({ album, setCommentOpen, user }) {
 
     const commentEls = comments?.map((comment) => {
         return (
-            <Comment comment={comment} />
+            <Comment comment={comment} user={user} handleRequest={handleRequest} />
         )
     })
 
