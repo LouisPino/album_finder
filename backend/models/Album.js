@@ -21,6 +21,6 @@ const albumSchema = new Schema({
     toObject: { virtuals: true }
 });
 
-albumSchema.virtual('commentCount').get(5);
+// albumSchema.virtual('commentCount').get(5);
 
 module.exports = mongoose.model('Album', albumSchema);
