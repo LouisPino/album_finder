@@ -24,6 +24,7 @@ var indexRouter = require('./routes/index');
 var albumsRouter = require('./routes/albums');
 var artistRouter = require('./routes/artists');
 var userRouter = require('./routes/users');
+var commentRouter = require('./routes/comments');
 
 
 // view engine setup
@@ -43,6 +44,7 @@ app.use('/', indexRouter);
 app.use('/albums', albumsRouter);
 app.use('/artists', artistRouter);
 app.use('/users', userRouter);
+app.use('/comments', commentRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
