@@ -14,17 +14,18 @@ async function addComment(req, res) {
     }
 }
 
-async function deleteComment(req, res) {
+
+async function getCommentsByAlbumId(req, res) {
     try {
-        res.status(200).json(await Comment.findByIdAndDelete(req.body.id));
+        res.status(200).json(await Comment.find({ album_id: req.params.id }));
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
 }
 
-async function getCommentsByAlbumId(req, res) {
+async function deleteComment(req, res) {
     try {
-        res.status(200).json(await Comment.find({ album_id: req.params.id }));
+        res.status(200).json(await Comment.findByIdAndDelete(req.body.id));
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
