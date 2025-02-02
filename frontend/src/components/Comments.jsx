@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
+import { getCommentsByAlbumId } from "../utilities/comment-service.js"
+import Comment from "./Comment.jsx"
+import("../styles/comments.css")
 
-export default function Comments({ user, album }) {
+export default function Comments({ album, setCommentOpen }) {
     const [comments, setComments] = useState(null)
 
     async function handleRequest() {
-        const commentsResp = await getComments.ByAlbumId(album._id)
+        const commentsResp = await getCommentsByAlbumId(album._id)
         if (commentsResp.length) {
+            commentsResp.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
             setComments(commentsResp)
         }
     }
@@ -22,7 +26,10 @@ export default function Comments({ user, album }) {
 
     return (
         <div className="comments">
-            {commentEls}
+            {comments ? commentEls : "Be the first to leave a comment!"}
+            <button className="comment-x" onClick={() => { setCommentOpen(false) }}>X</button>
+            <textarea className="comment-field"></textarea>
+            <button className="comment-submit">Submit</button>
         </div >
     )
 }

@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
-import Comment from "./Comment.jsx";
-
 export default function Comment({ comment }) {
+    const date = new Date(comment.createdAt);
     return (
         <div className="comment">
-            <div className="comment-user">{comment.content}</div>
-            <div className="comment-content">{comment.user_name}</div>=
+            <div className="comment-l">
+                <p className="comment-user">{comment.user_name}</p>
+                <p className="comment-timestamp">{date.toLocaleString([], { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
+            </div>
+            <div className="comment-content">{comment.content}</div>
         </div >
     )
 }

@@ -27,7 +27,7 @@ export default function Heart({ user, album }) {
 
     return (
         <div onClick={handleLike} className="album-heart">
-            <img src={liked ? redHeart : whiteHeart} />
+            <img className="album-card-img" src={liked ? redHeart : whiteHeart} />
         </div >
     )
 }

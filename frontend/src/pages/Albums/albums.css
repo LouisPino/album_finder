@@ -93,7 +93,12 @@ fieldset {
     align-self: end;
 }
 
-.album-heart>img {
+.comment-icon {
+    position: absolute;
+    align-self: start;
+}
+
+.album-card-img {
     width: 24px;
 }
 
