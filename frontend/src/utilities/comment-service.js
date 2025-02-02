@@ -8,3 +8,12 @@ export async function getCommentsByAlbumId(id) {
         return err
     }
 }
+
+export async function addComment(comment) {
+    try {
+        const data = await commentAPI.addComment(comment)
+        return data
+    } catch (err) {
+        return err
+    }
+}

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { getCommentsByAlbumId } from "../utilities/comment-service.js"
+import { getCommentsByAlbumId, addComment } from "../utilities/comment-service.js"
 import Comment from "./Comment.jsx"
 import("../styles/comments.css")
 
-export default function Comments({ album, setCommentOpen }) {
+export default function Comments({ album, setCommentOpen, user }) {
     const [comments, setComments] = useState(null)
 
     async function handleRequest() {
@@ -11,6 +11,24 @@ export default function Comments({ album, setCommentOpen }) {
         if (commentsResp.length) {
             commentsResp.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
             setComments(commentsResp)
+        }
+    }
+
+    async function handleSubmit(e) {
+        const commentText = e.target.previousSibling.value
+        console.log(commentText)
+        const data = {
+            "content": commentText,
+            "user_id": user._id,
+            "user_name": user.name,
+            "album_id": album._id
+        }
+
+        console.log(data)
+
+        const addCommentResp = await addComment(data)
+        if (addCommentResp) {
+            console.log(addCommentResp)
         }
     }
 
@@ -25,11 +43,14 @@ export default function Comments({ album, setCommentOpen }) {
     })
 
     return (
-        <div className="comments">
-            {comments ? commentEls : "Be the first to leave a comment!"}
-            <button className="comment-x" onClick={() => { setCommentOpen(false) }}>X</button>
-            <textarea className="comment-field"></textarea>
-            <button className="comment-submit">Submit</button>
-        </div >
+        <>
+            <div className="comments">
+                {comments ? commentEls : user ? "Be the first to leave a comment!" : "Sign in to leave a comment!"}
+                <button className="comment-x" onClick={() => { setCommentOpen(false) }}>X</button>
+                {user && <><textarea className="comment-field"></textarea>
+                    <button onClick={handleSubmit} className="comment-submit">Submit</button></>}
+            </div >
+
+        </>
     )
 }

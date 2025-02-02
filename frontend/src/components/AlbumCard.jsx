@@ -16,7 +16,11 @@ export default function AlbumCard({ album, user }) {
                 <h4>{artistStr}</h4>
             </a >
         </div >
-        {commentOpen && <Comments album={album} setCommentOpen={setCommentOpen}></Comments>
+        {commentOpen &&
+            <><Comments album={album} user={user} setCommentOpen={setCommentOpen}></Comments>
+                <div className="comment-blackout" >
+                </div >
+            </>
         }
     </>
     )

@@ -1,8 +1,8 @@
 
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
-export async function create(data) {
-    const res = await fetch(`${BASE_URL}/users`, {
+export async function addComment(data) {
+    const res = await fetch(`${BASE_URL}/comments`, {
         method: "POST",
         credentials: "include",
         headers: {

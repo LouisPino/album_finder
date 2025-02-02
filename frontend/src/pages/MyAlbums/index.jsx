@@ -75,7 +75,11 @@ export default function MyAlbums({ user }) {
                                         )}
                                     </div>
                                 </div>
-                                {youSureId == album._id && <YouSure user={user} album={album} handleRemove={handleRemove} setYouSureId={setYouSureId} youSureId={youSureId} />}
+                                {youSureId == album._id && <>
+                                    <div className="comment-blackout" >
+                                    </div >
+                                    <YouSure user={user} album={album} handleRemove={handleRemove} setYouSureId={setYouSureId} youSureId={youSureId} />
+                                </>}
                             </>
                         ))
                     ) : (
