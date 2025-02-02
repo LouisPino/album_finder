@@ -31,7 +31,6 @@ function App() {
           <Route exact path="/random" element={<Random user={user} />} />
           <Route exact path="/artists/:artist" element={<Artist user={user} />} />
           <Route path="/*" element={<_404 />} />
-
         </Routes>
         <Footer />
       </BrowserRouter>
