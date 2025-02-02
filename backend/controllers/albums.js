@@ -23,31 +23,17 @@ async function index(req, res) {
         res.status(200).json(await Album.aggregate([
             {
                 $lookup: {
-                    from: 'comments', // The name of the comments collection
-                    localField: '_id',
-                    foreignField: 'album_id',
-                    as: 'comments'
+                    from: 'comments', // The collection to join
+                    localField: '_id', // Field from the albums collection
+                    foreignField: 'album_id', // Field from the comments collection
+                    as: 'albumComments' // Output array field
                 }
             },
             {
                 $addFields: {
-                    commentCount: { $size: '$comments' }
+                    commentCount: { $size: '$albumComments' } // Calculate the number of comments
                 }
             },
-            {
-                $project: {
-                    title: 1,
-                    description: 1,
-                    artist: 1,
-                    uploader: 1,
-                    email: 1,
-                    link: 1,
-                    image: 1,
-                    release_year: 1,
-                    categories: 1,
-                    commentCount: 1
-                }
-            }
         ]));
     } catch (error) {
         res.status(400).json({ error: error.message });

@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const aggregate = MyModel.aggregate([{ $match: { answer: 42 } }]);
 
+// Change the model. There's rarely any reason to do this.
+aggregate.model(SomeOtherModel);
+aggregate.model() === SomeOtherModel; // true
 const albumSchema = new Schema({
     title: String,
     description: String,
@@ -22,6 +26,6 @@ albumSchema.virtual('commentCount', {
     localField: '_id', // Field from the albums collection
     foreignField: 'album_id', // Field from the comments collection
     count: true // Enable counting
-});
+}).get();
 
 module.exports = mongoose.model('Album', albumSchema);
