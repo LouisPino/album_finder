@@ -67,5 +67,15 @@ a {
         flex-direction: column;
         align-items: end;
         z-index: 100;
+        height: fit-content;
+        border: 1px solid black;
+        background-color: white;
+    }
+
+    .header-r>.header-link {
+        width: 100%;
+        text-align: right;
+        padding: 0;
+        margin-bottom: 4px;
     }
 }
