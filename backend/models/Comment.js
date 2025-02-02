@@ -3,8 +3,8 @@ const { Schema, Types } = mongoose;
 
 const commentSchema = new Schema({
     content: String,
-    user: [{ type: Types.ObjectId, ref: 'User' }],
-    album: [{ type: Types.ObjectId, ref: 'Album' }],
+    user_id: { type: Types.ObjectId, ref: 'User' },
+    album_id: { type: Types.ObjectId, ref: 'Album' },
 }, {
     timestamps: true
 });
