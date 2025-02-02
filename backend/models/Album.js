@@ -17,7 +17,7 @@ const albumSchema = new Schema({
     toObject: { virtuals: true }
 });
 
-albumSchema.virtual('commentCount', {
+albumSchema.virtual('comments', {
     ref: 'Comment', // The model to count
     localField: '_id', // Field from the albums collection
     foreignField: 'album_id', // Field from the comments collection
