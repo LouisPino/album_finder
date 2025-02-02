@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { getCommentsByAlbumId, addComment } from "../utilities/comment-service.js"
 import Comment from "./Comment.jsx"
+import { useNavigate } from "react-router-dom";
 import("../styles/comments.css")
 
 export default function Comments({ album, setCommentOpen, user }) {
     const [comments, setComments] = useState(null)
-
+    const navigate = useNavigate()
     async function handleRequest() {
         const commentsResp = await getCommentsByAlbumId(album._id)
         if (commentsResp.length) {
@@ -16,19 +17,16 @@ export default function Comments({ album, setCommentOpen, user }) {
 
     async function handleSubmit(e) {
         const commentText = e.target.previousSibling.value
-        console.log(commentText)
         const data = {
             "content": commentText,
             "user_id": user._id,
             "user_name": user.name,
             "album_id": album._id
         }
-
-        console.log(data)
-
         const addCommentResp = await addComment(data)
-        if (addCommentResp) {
-            console.log(addCommentResp)
+        if (addCommentResp._id) {
+            handleRequest()
+            e.target.previousSibling.value = ""
         }
     }
 
