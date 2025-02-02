@@ -6,7 +6,9 @@ export default function Comment({ comment }) {
                 <p className="comment-user">{comment.user_name}</p>
                 <p className="comment-timestamp">{date.toLocaleString([], { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
             </div>
-            <div className="comment-content">{comment.content}</div>
+            <div className="comment-content">{comment.content}
+                <button className="comment-x">X</button>
+            </div>
         </div >
     )
 }

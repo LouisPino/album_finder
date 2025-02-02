@@ -44,7 +44,7 @@ export default function Comments({ album, setCommentOpen, user }) {
         <>
             <div className="comments">
                 {comments ? commentEls : user ? "Be the first to leave a comment!" : "Sign in to leave a comment!"}
-                <button className="comment-x" onClick={() => { setCommentOpen(false) }}>X</button>
+                <button className="comments-x" onClick={() => { setCommentOpen(false) }}>X</button>
                 {user && <><textarea className="comment-field"></textarea>
                     <button onClick={handleSubmit} className="comment-submit">Submit</button></>}
             </div >
