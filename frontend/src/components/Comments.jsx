@@ -6,9 +6,10 @@ import("../styles/comments.css")
 
 export default function Comments({ album, setCommentOpen, user, commentsProp }) {
     const [comments, setComments] = useState(commentsProp)
+
     async function handleRequest() {
         const commentsResp = await getCommentsByAlbumId(album._id)
-        if (commentsResp.length) {
+        if (commentsResp) {
             commentsResp.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
             setComments(commentsResp)
         }
@@ -24,7 +25,7 @@ export default function Comments({ album, setCommentOpen, user, commentsProp }) 
         }
         const addCommentResp = await addComment(data)
         if (addCommentResp._id) {
-            // handleRequest()
+            handleRequest()
             e.target.previousSibling.value = ""
         }
     }
@@ -38,7 +39,7 @@ export default function Comments({ album, setCommentOpen, user, commentsProp }) 
     return (
         <>
             <div className="comments">
-                {comments.length ? commentEls : user ? "Be the first to leave a comment!" : "Sign in to leave a comment!"}
+                {comments?.length ? commentEls : user ? "Be the first to leave a comment!" : "Sign in to leave a comment!"}
                 <button className="comments-x" onClick={() => { setCommentOpen(false) }}>X</button>
                 {user && <><textarea className="comment-field"></textarea>
                     <button onClick={handleSubmit} className="comment-submit">Submit</button></>}

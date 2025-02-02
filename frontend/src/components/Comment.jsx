@@ -10,9 +10,8 @@ export default function Comment({ comment, user, handleRequest }) {
     }
 
     async function handleRemove() {
-        //delete comment
-        setConfirmDeleteOpen(false)
         await deleteComment(comment._id)
+        setConfirmDeleteOpen(false)
         handleRequest()
     }
 
