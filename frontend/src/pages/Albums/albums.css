@@ -98,6 +98,15 @@ fieldset {
     align-self: start;
 }
 
+.comment-icon-number {
+    position: absolute;
+    align-self: start;
+    margin: 2px 0 0 0;
+    font-size: small;
+    pointer-events: none;
+
+}
+
 .album-card-img {
     width: 24px;
 }

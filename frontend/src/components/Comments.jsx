@@ -4,9 +4,8 @@ import Comment from "./Comment.jsx"
 import { useNavigate } from "react-router-dom";
 import("../styles/comments.css")
 
-export default function Comments({ album, setCommentOpen, user }) {
-    const [comments, setComments] = useState(null)
-    const navigate = useNavigate()
+export default function Comments({ album, setCommentOpen, user, commentsProp }) {
+    const [comments, setComments] = useState(commentsProp)
     async function handleRequest() {
         const commentsResp = await getCommentsByAlbumId(album._id)
         if (commentsResp.length) {
@@ -25,14 +24,10 @@ export default function Comments({ album, setCommentOpen, user }) {
         }
         const addCommentResp = await addComment(data)
         if (addCommentResp._id) {
-            handleRequest()
+            // handleRequest()
             e.target.previousSibling.value = ""
         }
     }
-
-    useEffect(() => {
-        handleRequest()
-    }, [])
 
     const commentEls = comments?.map((comment) => {
         return (
@@ -43,7 +38,7 @@ export default function Comments({ album, setCommentOpen, user }) {
     return (
         <>
             <div className="comments">
-                {comments ? commentEls : user ? "Be the first to leave a comment!" : "Sign in to leave a comment!"}
+                {comments.length ? commentEls : user ? "Be the first to leave a comment!" : "Sign in to leave a comment!"}
                 <button className="comments-x" onClick={() => { setCommentOpen(false) }}>X</button>
                 {user && <><textarea className="comment-field"></textarea>
                     <button onClick={handleSubmit} className="comment-submit">Submit</button></>}

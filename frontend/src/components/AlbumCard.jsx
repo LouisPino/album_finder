@@ -18,7 +18,7 @@ export default function AlbumCard({ album, user }) {
             </a >
         </div >
         {commentOpen &&
-            <><Comments album={album} user={user} setCommentOpen={setCommentOpen}></Comments>
+            <><Comments album={album} user={user} commentsProp={album.comments} setCommentOpen={setCommentOpen}></Comments>
                 <div className="comment-blackout" >
                 </div >
             </>
