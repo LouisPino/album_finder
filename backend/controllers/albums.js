@@ -35,8 +35,8 @@ async function getAlbumsByEmail(req, res) {
 }
 
 async function getUserSavedAlbumsById(req, res) {
-    const user = await User.find({ id: req.params.id })
-    const ids = user[0].favorites
+    const user = await User.findById(req.params.id)
+    const ids = user.favorites
     try {
         res.status(200).json(await Album.find({ '_id': { $in: ids } }));
     } catch (error) {
