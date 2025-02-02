@@ -20,7 +20,7 @@ async function create(req, res) {
 
 async function index(req, res) {
     try {
-        res.status(200).json(await Album.find().populate('commentCount'));
+        res.status(200).json(await Album.find().populate('comments'));
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
@@ -28,7 +28,7 @@ async function index(req, res) {
 
 async function getAlbumsByEmail(req, res) {
     try {
-        res.status(200).json(await Album.find({ email: req.params.email }));
+        res.status(200).json(await Album.find({ email: req.params.email }).populate('comments'));
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
@@ -38,7 +38,7 @@ async function getUserSavedAlbumsById(req, res) {
     const user = await User.findById(req.params.id)
     const ids = user.favorites
     try {
-        res.status(200).json(await Album.find({ '_id': { $in: ids } }));
+        res.status(200).json(await Album.find({ '_id': { $in: ids } }).populate('comments'));
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
@@ -54,7 +54,7 @@ async function deleteAlbumById(req, res) {
 
 async function getAlbumById(req, res) {
     try {
-        res.status(200).json(await Album.findById(req.params.id));
+        res.status(200).json(await Album.findById(req.params.id).populate('comments'));
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
