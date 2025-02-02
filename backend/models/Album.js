@@ -18,7 +18,7 @@ const albumSchema = new Schema({
 albumSchema.virtual('commentCount', {
     ref: 'Comment', // The model to count
     localField: '_id', // Field from the albums collection
-    foreignField: 'albumId', // Field from the comments collection
+    foreignField: 'album_id', // Field from the comments collection
     count: true // Enable counting
 });
 
