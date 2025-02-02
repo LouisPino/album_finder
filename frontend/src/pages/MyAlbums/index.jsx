@@ -16,19 +16,13 @@ export default function MyAlbums({ user }) {
 
     useEffect(() => {
         getProfile();
-    }, []);
+    }, [location]);
 
     useEffect(() => {
         if (profile) {
             handleLoad();
         }
     }, [profile]);
-
-    useEffect(() => {
-    }, [albums]);
-
-    useEffect(() => {
-    }, [savedAlbums]);
 
     async function handleLoad() {
         const albumsResp = await getUserAlbums(profile);

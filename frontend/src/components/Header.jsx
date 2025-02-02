@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import GoogleAuth from './GoogleAuth';
 import { GoogleLogin, GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google';
 
@@ -13,13 +13,11 @@ export default function Header({ user, setUser }) {
         const ua = navigator.userAgent || navigator.vendor || window.opera;
         return /Instagram|FBAN|FBAV/i.test(ua);
     }
-
     function alertUser() {
         if (isInAppBrowser()) {
             alert("Instagram's web browser doesn't allow sign in. Please open in a web browser. Sorry!");
         }
     }
-
 
     return (
         <div className="header ">
