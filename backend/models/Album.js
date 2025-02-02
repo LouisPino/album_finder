@@ -12,7 +12,9 @@ const albumSchema = new Schema({
     release_year: Number,
     categories: [String]
 }, {
-    timestamps: true
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
 });
 
 albumSchema.virtual('commentCount', {
@@ -22,7 +24,6 @@ albumSchema.virtual('commentCount', {
     count: true // Enable counting
 });
 
-albumSchema.set('toJSON', { virtuals: true });
 
 
 module.exports = mongoose.model('Album', albumSchema); 
