@@ -24,6 +24,4 @@ albumSchema.virtual('commentCount', {
     count: true // Enable counting
 });
 
-
-
-module.exports = mongoose.model('Album', albumSchema); 
+module.exports = mongoose.model('Album', albumSchema);
