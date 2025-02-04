@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useLocation, useNavigate } from "react-router";
 import GoogleAuth from './GoogleAuth';
-import { GoogleLogin, GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google';
+import { GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google';
 
 
 import("../styles/header.css")
@@ -38,7 +36,6 @@ export default function Header({ user, setUser }) {
                     <GoogleOAuthProvider clientId={clientId} >
                         <GoogleAuth alertUser={alertUser} user={user} setUser={setUser} clientId={clientId} useGoogleLogin={useGoogleLogin} />
                     </ GoogleOAuthProvider>
-
                 </div>
             }
         </div >

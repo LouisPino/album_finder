@@ -10,7 +10,7 @@ import Home from "./pages/Home";
 import MyAlbums from "./pages/MyAlbums";
 import _404 from "./pages/404";
 import Random from "./pages/Random";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import("./styles/footer.css");
 import("./App.css");
 

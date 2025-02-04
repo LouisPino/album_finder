@@ -13,14 +13,14 @@ export default function Artist({ user }) {
 
     async function loadAlbums() {
         const albumResp = await findByArtist(location.pathname.substring(9))
-        if (albumResp.length) {
+        if (albumResp?.length) {
             setAlbums(albumResp);
         }
     }
 
-    const albumEls = albums?.map((album) => (
-        <AlbumCard album={album} user={user} />
-    ))
+    const albumEls = albums?.map((album) => {
+        return <AlbumCard album={album} user={user} />
+    })
     return (
         albums ?
             <section className="artist-page">

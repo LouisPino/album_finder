@@ -1,8 +1,4 @@
-import { useEffect, useState } from "react";
-import { addAlbum } from "../../utilities/album-service";
 import("./style.css")
-
-
 export default function Home() {
 
     return (

@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-import { updateUser } from "../utilities/user-api";
+
 import("../styles/yousure.css")
-export default function YouSure({ user, album, handleRemove, setYouSureId, youSureId }) {
+export default function YouSure({ album, handleRemove, setYouSureId }) {
     return (
         <div className="you-sure">
             <h2 className="you-sure-text">You sure you wanna delete {album.title}??</h2>

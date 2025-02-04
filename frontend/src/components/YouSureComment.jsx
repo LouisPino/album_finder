@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
 import("../styles/yousure.css")
-export default function YouSureComment({ album, comment, handleRemove, setConfirmDeleteOpen }) {
+export default function YouSureComment({ handleRemove, setConfirmDeleteOpen }) {
     return (
         <div className="you-sure">
             <h2 className="you-sure-text">You sure you wanna delete this comment??</h2>

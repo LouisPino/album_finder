@@ -1,4 +1,4 @@
-import { getArtists, findByArtist } from "../../utilities/artist-service";
+import { getArtists } from "../../utilities/artist-service";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import("./style.css");
