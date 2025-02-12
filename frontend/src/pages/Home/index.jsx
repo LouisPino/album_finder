@@ -13,7 +13,6 @@ export default function Home() {
                     </div>
                     {/* <div className="home-info-l-bottom" >
                         <p className="title">VENUES</p>
-
                     </div> */}
                 </div>
                 {/* <div className="home-info-r">

@@ -2,4 +2,11 @@
     text-align: right;
     justify-self: bottom;
     margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 12px;
+}
+
+.footer>p {
+    margin-bottom: 2px;
 }
