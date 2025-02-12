@@ -2,7 +2,6 @@
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
 export async function index() {
-    console.log(`${BASE_URL}/albums`)
     const res = await fetch(`${BASE_URL}/albums`, {
         method: "GET",
         credentials: "include",
