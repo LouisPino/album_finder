@@ -8,10 +8,7 @@ export default function Home() {
             <div className="home-info">
                 <div className="home-info-l">
                     <div className="home-info-l-top" >
-                        <h2>For up to date <strong>live event listings</strong> and <strong>decades of archival audio and video recordings</strong>, check out
-                            <a href="https://mechanicalforestsound.blogspot.com/" id="mech-forest" target="_blank">MECHANICAL FOREST SOUND </a>
-                            and <a href="https://earlobe.ca/" id="earlobe" target="_blank">EARLOBE
-                            </a></h2>
+                        <h2>For up to date <strong>live event listings</strong> and <strong>decades of archival audio and video recordings</strong>, check out <a href="https://mechanicalforestsound.blogspot.com/" id="mech-forest" target="_blank">MECHANICAL FOREST SOUND</a> and <a href="https://earlobe.ca/" id="earlobe" target="_blank">EARLOBE.</a></h2>
 
                     </div>
                     {/* <div className="home-info-l-bottom" >
