@@ -45,7 +45,8 @@
     margin: 4px;
 }
 
-#mech-forest {
+#mech-forest,
+#earlobe {
     font-size: 28px;
     text-decoration: underline;
     font-weight: bolder;
