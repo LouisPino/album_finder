@@ -13,7 +13,7 @@ const FRONTEND_URL = process.env.FRONTEND_URL
 
 var app = express();
 app.use(cors({
-  origin: [FRONTEND_URL, 'http://localhost:3000', "listento.netlify.app", "listentorotono.ca"], // Allow only your frontend
+  origin: [FRONTEND_URL, 'http://localhost:3000', "https://listento.netlify.app", "https://listentoronto.ca"], // Allow only your frontend
   methods: 'GET, POST, PUT , DELETE, OPTIONS',
   allowedHeaders: 'Content-Type, Authorization',
   credentials: true, // If you're using cookies or authentication
