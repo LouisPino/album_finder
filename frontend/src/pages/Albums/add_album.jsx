@@ -13,7 +13,7 @@ export default function AddAlbum({ user }) {
         description: "",
         categories: [],
     }
-    const categories = ["noise", "ambient", "improvisation", "acoustic", "electronic", "vocal", "live performance"]
+    const categories = ["noise", "ambient", "improvisation", "acoustic", "electronic", "vocal", "jazz", "live performance"]
     const categoryOptions = categories.map((category) => (
         <>
             <input onChange={handleInput} className="category-select" type="checkbox" id={category} name="categories" value={category} />
