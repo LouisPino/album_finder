@@ -7,7 +7,7 @@ import("./albums.css")
 export default function Albums({ user }) {
   const [albums, setAlbums] = useState(null);
   const [filters, setFilters] = useState(null)
-  const categories = ["noise", "ambient", "improvisation", "acoustic", "electronic", "vocal", "jazz", "live performance"]
+  const categories = ["noise", "ambient", "improvisation", "acoustic", "electronic", "vocal", "pop", "jazz", "live performance"]
 
   useEffect(() => {
     handleRequest()

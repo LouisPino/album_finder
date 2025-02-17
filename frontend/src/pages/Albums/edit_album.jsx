@@ -36,7 +36,7 @@ export default function EditAlbum({ user }) {
         setAlbumInfo(album)
         setId(album._id)
     }
-    const categories = ["noise", "ambient", "improvisation", "acoustic", "electronic", "vocal", "jazz", "live performance"]
+    const categories = ["noise", "ambient", "improvisation", "acoustic", "electronic", "vocal", "pop", "jazz", "live performance"]
     const categoryOptions = categories.map((category) => (
         <>
             <input onChange={handleInput} className="category-select" type="checkbox" id={category} name="categories" value={category} checked={albumInfo?.categories.includes(category) ? "on" : ""} />
