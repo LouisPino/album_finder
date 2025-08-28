@@ -4,8 +4,8 @@ export default function Home() {
     return (
         <div className="welcome-page">
             <h1 className="home-top-text home-top-text-top">Welcome to ListenTO</h1>
-            <p className="home-top-text home-top-text-top">Experimental musicians in Toronto are releasing amazing music. Click around and find something you like.</p>
-            <p className="home-top-text"><strong>Sign in</strong> to <strong>share your favorite albums </strong>and <strong>upload your music.</strong></p>
+            <p className="home-top-text home-top-text-top">Experimental musicians in Toronto are releasing amazing music. Click around and find something you like!</p>
+            <p className="home-top-text"><strong>Sign in</strong> to <strong>keep track of your favorite albums, leave comments, </strong>and <strong>upload your music.</strong></p>
             <div className="home-info">
                 <div className="home-info-l">
                     <div className="home-info-l-top" >
