@@ -5,7 +5,10 @@ import { useGoogleLogin } from '@react-oauth/google';
 
 
 export default function GoogleAuth({ user, setUser, clientId, alertUser }) {
-
+    function handleSignInClick() {
+        const res = alertUser();
+        if (res === "success") { login() }
+    }
     const login = useGoogleLogin({
         flow: "auth-code", // Ensures the response includes an ID token
         onSuccess: async (credentialResponse) => {
@@ -18,6 +21,6 @@ export default function GoogleAuth({ user, setUser, clientId, alertUser }) {
     });
 
     return (
-        <button className="login-btn" onClick={() => { alertUser(); login() }}>Sign In</button>
+        <button className="login-btn" onClick={handleSignInClick}>Sign In</button>
     );
 };
