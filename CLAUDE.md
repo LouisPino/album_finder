@@ -44,7 +44,7 @@ Both apps read `.env` (gitignored, never commit).
 | --- | --- |
 | `DATABASE_URI` | MongoDB connection string (`config/database.js`) |
 | `PORT` | defaults to 5000 |
-| `FRONTEND_URL` | added to the CORS allowlist |
+| `FRONTEND_URL` | no longer read by the backend (CORS is open to all origins) |
 | `GOOGLE_CLIENT_ID`, `CLIENT_SECRET` | Google OAuth code exchange |
 | `JWT_SECRET`, `BASE_URL` | read in `controllers/users.js` but currently unused |
 
@@ -52,8 +52,9 @@ Both apps read `.env` (gitignored, never commit).
 `REACT_APP_GOOGLE_CLIENT_ID`. CRA inlines these at build time — changing them requires a
 restart/rebuild.
 
-The CORS allowlist in `backend/app.js` is hardcoded alongside `FRONTEND_URL`
-(`localhost:3000`, `listento.netlify.app`, `listentoronto.com`). New origins go there.
+`backend/app.js` runs a bare `app.use(cors())` — every route answers every origin. There is
+no allowlist to add to. Note this applies to the write routes too, which have no auth (see
+below), so any page in any browser can reach them.
 
 ## Backend layout
 
