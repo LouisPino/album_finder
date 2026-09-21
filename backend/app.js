@@ -13,7 +13,8 @@ const FRONTEND_URL = process.env.FRONTEND_URL
 
 var app = express();
 app.use(cors({
-  origin: [FRONTEND_URL, 'http://localhost:3000', "https://listento.netlify.app", "https://listentoronto.ca"], // Allow only your frontend
+  // Own frontend, plus earlobe.ca which reads /artists/albums from the browser.
+  origin: [FRONTEND_URL, 'http://localhost:3000', 'http://localhost:8000', "https://listento.netlify.app", "https://listentoronto.com", "https://earlobe.ca", "https://www.earlobe.ca"],
   methods: 'GET, POST, PUT , DELETE, OPTIONS',
   allowedHeaders: 'Content-Type, Authorization',
   credentials: true, // If you're using cookies or authentication
