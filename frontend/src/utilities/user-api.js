@@ -4,7 +4,6 @@ const BASE_URL = process.env.REACT_APP_BASE_URL
 export async function create(data) {
     const res = await fetch(`${BASE_URL}/users`, {
         method: "POST",
-        credentials: "include",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -21,7 +20,6 @@ export async function create(data) {
 export async function getUserById(id) {
     const res = await fetch(`${BASE_URL}/users/${id}`, {
         method: "GET",
-        credentials: "include",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -37,7 +35,6 @@ export async function getUserById(id) {
 export async function updateUser(user) {
     const res = await fetch(`${BASE_URL}/users/${user._id}`, {
         method: "PUT",
-        credentials: "include",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",

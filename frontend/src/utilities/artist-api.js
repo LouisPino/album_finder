@@ -5,7 +5,6 @@ export async function index() {
 
     const res = await fetch(`${BASE_URL}/artists`, {
         method: "GET",
-        credentials: "include",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -20,7 +19,6 @@ export async function index() {
 export async function findByArtist(artist) {
     const res = await fetch(`${BASE_URL}/artists/${artist}`, {
         method: "GET",
-        credentials: "include",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -39,7 +37,6 @@ export async function create(data) {
 
     const res = await fetch(`${BASE_URL}/albums/create`, {
         method: "POST",
-        credentials: "include",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
